@@ -1,0 +1,10 @@
+record_id,section,subsection,row_type,item_key,label,content,detail,meta,link_url,display_order,source
+COURSE-001,hero,basic_info,info,course_title,과정명,"LEADERS FORUM: AGI 시장지배력의 시대",,,,10,"user update"
+COURSE-002,hero,basic_info,info,event_datetime,일시,2026-05-28,11:00~12:50,"5월 28일(목)",,20,"user update"
+COURSE-003,hero,basic_info,info,venue,장소,3층 YSK홀,,,,30,"user update"
+COURSE-005,hero,basic_info,info,instructor,강사,"KAIST 김대식 교수","뇌과학 및 AI 분야 권위자",,,50,"user update"
+COURSE-019,timetable,sessions,session,session_01,식사,11:00~11:25,"도시락 식사 (햄버거와 음료 제공)",,,190,"user update"
+COURSE-020,timetable,sessions,session,session_02,강의,11:30~12:50,"강의 진행 (AGI 시장지배력의 시대)",,,200,"user update"
+COURSE-055,faq,participant_faq,faq,faq_01,공지 1,"식사 안내","11시부터 햄버거가 제공되니 원활한 진행을 위해 미리 식사 부탁드립니다.",,,550,"user update"
+COURSE-056,faq,participant_faq,faq,faq_02,공지 2,"쓰레기 분리 배출","식사 후 포장지와 빈 캔은 배포된 갈색 봉투에 담아 각 층 분리 배출함에 버려주세요.",,,560,"user update"
+COURSE-057,recommended_video,media,link,video_01,추천 영상,"""딱 5년 남았어요"" AGI 시대 오면 '이런' 인간만 살아남을 겁니다 (카이스트 김대식 교수)",,,http://www.youtube.com/watch?v=89rQSoPFd7M,570,"user update"
