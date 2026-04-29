@@ -6,74 +6,110 @@
     <title>LEADERS FORUM: AGI 시장지배력의 시대</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <style>
+        /* 깊이감 있는 다크 그라데이션 배경 (AI 테마) */
         body {
-            background-color: #000000;
-            color: #f5f5f7;
-            /* 폰트 최우선 순위를 Pretendard로 고정 */
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            background: radial-gradient(circle at 15% 50%, #161a2b, #0d0f18, #050608);
+            background-attachment: fixed;
+            color: #f1f5f9;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 40px 20px;
             letter-spacing: -0.02em;
         }
+        
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
+
+        /* 텍스트 그라데이션 (사이버/미래지향적 느낌) */
         h1, h2 { 
-            color: #d4af37; 
             font-weight: 700;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0px 4px 20px rgba(0, 242, 254, 0.2);
         }
+
         h1 {
-            font-size: 32px;
+            font-size: 34px;
             margin-top: 0;
-            line-height: 1.3;
+            line-height: 1.35;
         }
+
+        /* Hero 영역 */
         .hero { 
             text-align: center; 
-            padding-bottom: 40px; 
-            border-bottom: 1px solid #333333; 
             margin-bottom: 50px;
         }
         .hero img {
             width: 100%; 
             max-height: 450px; 
             object-fit: cover; 
-            border-radius: 16px;
+            border-radius: 20px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .hero p {
             font-size: 18px;
-            color: #a1a1a6;
+            color: #94a3b8;
             margin: 8px 0;
             font-weight: 500;
         }
-        .section { margin-bottom: 60px; }
-        .section h2 {
-            font-size: 24px;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 12px;
-            margin-bottom: 24px;
+        .hero p strong {
+            color: #cbd5e1;
         }
+
+        /* 글래스모피즘(유리 질감) 카드 UI 적용 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 35px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-2px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card h2 {
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* 타임테이블 */
         ul.timeline {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         ul.timeline li {
-            background: #1c1c1e;
+            background: rgba(0, 0, 0, 0.2);
             margin-bottom: 12px;
             padding: 18px 24px;
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             font-size: 17px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
         ul.timeline li strong {
-            color: #d4af37;
+            color: #4facfe;
             width: 150px;
             flex-shrink: 0;
         }
+
+        /* 유튜브 영상 */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -81,6 +117,7 @@
             overflow: hidden;
             border-radius: 16px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .video-container iframe {
             position: absolute;
@@ -89,21 +126,15 @@
             width: 100%;
             height: 100%;
         }
+
+        /* 공지사항 박스 강조 */
         .notice-box {
-            background-color: #1c1c1e;
-            padding: 30px 40px;
-            border-radius: 16px;
-            border-left: 5px solid #d4af37;
-        }
-        .notice-box h2 {
-            border-bottom: none;
-            margin-top: 0;
-            padding-bottom: 0;
+            border-left: 5px solid #4facfe;
         }
         .notice-box ul {
             margin: 0;
             padding-left: 20px;
-            color: #a1a1a6;
+            color: #cbd5e1;
             font-size: 16px;
         }
         .notice-box li {
@@ -113,107 +144,114 @@
             margin-bottom: 0;
         }
 
-        /* 챗봇 스타일 */
+        /* 세련된 챗봇 스타일 */
         #chat-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #d4af37;
-            color: #000;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: #fff;
             border: none;
             border-radius: 50%;
             width: 60px;
             height: 60px;
-            font-size: 24px;
+            font-size: 26px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.4);
             z-index: 1000;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
         }
-        #chat-btn:hover { transform: scale(1.1); }
+        #chat-btn:hover { 
+            transform: scale(1.1) translateY(-5px); 
+        }
         #chat-window {
             display: none;
             position: fixed;
             bottom: 100px;
             right: 30px;
-            width: 320px;
-            height: 400px;
-            background-color: #1c1c1e;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            border: 1px solid #333;
+            width: 340px;
+            height: 450px;
+            background: rgba(15, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
             flex-direction: column;
             overflow: hidden;
         }
         #chat-header {
-            background-color: #d4af37;
-            color: #000;
-            padding: 15px;
-            font-weight: bold;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 18px;
+            font-weight: 600;
             text-align: center;
             position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         #chat-close {
             position: absolute;
-            right: 15px;
-            top: 15px;
+            right: 20px;
+            top: 18px;
             cursor: pointer;
             font-weight: bold;
+            color: #94a3b8;
         }
         #chat-messages {
             flex: 1;
-            padding: 15px;
+            padding: 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
         .msg {
             max-width: 80%;
-            padding: 10px 14px;
-            border-radius: 12px;
+            padding: 12px 16px;
+            border-radius: 16px;
             font-size: 14px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
         .msg.bot {
-            background-color: #333;
-            color: #fff;
+            background: rgba(255, 255, 255, 0.08);
+            color: #f1f5f9;
             align-self: flex-start;
-            border-bottom-left-radius: 2px;
+            border-bottom-left-radius: 4px;
         }
         .msg.user {
-            background-color: #d4af37;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: #000;
+            font-weight: 500;
             align-self: flex-end;
-            border-bottom-right-radius: 2px;
+            border-bottom-right-radius: 4px;
         }
         #chat-input-area {
             display: flex;
-            padding: 10px;
-            background-color: #111;
-            border-top: 1px solid #333;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
         #chat-input {
             flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            background-color: #222;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             color: #fff;
             outline: none;
             font-family: inherit;
         }
+        #chat-input::placeholder { color: #64748b; }
         #chat-send {
-            background-color: #d4af37;
-            color: #000;
+            background: transparent;
+            color: #4facfe;
             border: none;
-            border-radius: 8px;
-            margin-left: 8px;
-            padding: 0 15px;
+            margin-left: 10px;
+            padding: 0 10px;
             cursor: pointer;
             font-weight: bold;
             font-family: inherit;
+            font-size: 15px;
         }
     </style>
 </head>
@@ -227,13 +265,13 @@
             <p><strong>장소:</strong> 3층 YSK홀</p>
         </div>
 
-        <div class="section">
+        <div class="glass-card">
             <h2>🎤 강사 소개</h2>
-            <p style="font-size: 20px; font-weight: 600; margin-bottom: 5px;">김대식 교수 (KAIST)</p>
-            <p style="color: #a1a1a6; margin-top: 0;">뇌과학 및 AI 분야 권위자</p>
+            <p style="font-size: 20px; font-weight: 600; margin-bottom: 5px; color: #fff;">김대식 교수 (KAIST)</p>
+            <p style="color: #94a3b8; margin-top: 0;">뇌과학 및 AI 분야 권위자</p>
         </div>
 
-        <div class="section">
+        <div class="glass-card">
             <h2>⏰ 일정 안내</h2>
             <ul class="timeline">
                 <li><strong>11:00 ~ 11:25</strong> 🍔 도시락 식사 (햄버거와 음료 제공)</li>
@@ -241,15 +279,15 @@
             </ul>
         </div>
 
-        <div class="section">
+        <div class="glass-card">
             <h2>📺 추천 영상 (Pre-Study)</h2>
-            <p style="color: #a1a1a6; margin-bottom: 15px; font-size: 17px;">"딱 5년 남았어요" AGI 시대 오면 '이런' 인간만 살아남을 겁니다</p>
+            <p style="color: #94a3b8; margin-bottom: 20px; font-size: 16px;">"딱 5년 남았어요" AGI 시대 오면 '이런' 인간만 살아남을 겁니다</p>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/89rQSoPFd7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
-        <div class="section notice-box">
+        <div class="glass-card notice-box">
             <h2>📌 공지사항</h2>
             <ul>
                 <li>원활한 강의 진행을 위해 11시부터 햄버거가 제공됩니다. 강의 시작 전 미리 식사를 부탁드립니다.</li>
@@ -261,11 +299,11 @@
     <button id="chat-btn">💬</button>
     <div id="chat-window">
         <div id="chat-header">
-            포럼 안내 챗봇
-            <span id="chat-close">X</span>
+            AI 포럼 안내 챗봇
+            <span id="chat-close">✕</span>
         </div>
         <div id="chat-messages">
-            <div class="msg bot">안녕하세요! LEADERS FORUM 관련해서 궁금한 점을 물어보세요. (예: 장소, 시간, 강사, 식사 등)</div>
+            <div class="msg bot">안녕하세요! LEADERS FORUM 관련해서 궁금한 점을 편하게 물어보세요. (예: 장소, 시간, 강사, 식사 등)</div>
         </div>
         <div id="chat-input-area">
             <input type="text" id="chat-input" placeholder="질문을 입력하세요..." onkeypress="handleEnter(event)">
