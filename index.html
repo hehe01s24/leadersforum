@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 테크 컨설팅 스타일의 세련된 다크 테마 */
+        /* 컨설팅 펌 스타일의 세련된 다크 테마 */
         body {
             background: radial-gradient(circle at 10% 20%, #161a2b, #0d0f18, #050608);
             background-attachment: fixed;
@@ -53,12 +53,49 @@
             padding: 35px 40px;
             margin-bottom: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+        .glass-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.1); }
+        .glass-card h2 { border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-top: 0; margin-bottom: 24px; font-size: 24px; }
+
+        /* 버튼 그룹 (LIVE 애니메이션 포함) */
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+        
+        .slido-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff; font-weight: 700; font-size: 19px;
+            padding: 22px; border-radius: 18px; text-decoration: none;
+            box-shadow: 0 10px 25px rgba(118, 75, 162, 0.4);
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .slido-btn:hover { transform: scale(1.02); box-shadow: 0 15px 35px rgba(118, 75, 162, 0.6); }
+        
+        .survey-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #4facfe; font-weight: 600; font-size: 17px;
+            padding: 18px; border-radius: 18px; text-decoration: none;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+        }
+        .survey-btn:hover { background: rgba(79, 172, 254, 0.1); color: #fff; }
+
+        .live-dot { 
+            width: 8px; height: 8px; background-color: #ff4b2b; border-radius: 50%; 
+            display: inline-block; margin-right: 5px; animation: pulse 1.5s infinite;
         }
 
-        /* 강사 프로필 섹션 강화 */
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 75, 43, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); }
+        }
+
+        /* 강사 프로필 */
         .profile-container { display: flex; gap: 30px; align-items: center; }
         .profile-img { 
-            width: 200px; height: 200px; border-radius: 50%; 
+            width: 180px; height: 180px; border-radius: 50%; 
             object-fit: cover; border: 3px solid #4facfe;
             box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
         }
@@ -66,25 +103,7 @@
         .profile-text p { margin: 5px 0; color: #cbd5e1; font-size: 16px; }
         .profile-text .bio-tag { color: #4facfe; font-weight: 600; font-size: 14px; margin-top: 10px; display: block; }
 
-        /* 버튼 디자인 */
-        .btn-group { display: flex; flex-direction: column; gap: 15px; }
-        .slido-btn {
-            display: flex; align-items: center; justify-content: center; gap: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff; font-weight: 700; font-size: 18px;
-            padding: 20px; border-radius: 18px; text-decoration: none;
-            box-shadow: 0 10px 25px rgba(118, 75, 162, 0.4);
-            transition: all 0.3s ease;
-        }
-        .survey-btn {
-            display: flex; align-items: center; justify-content: center; gap: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            color: #4facfe; font-weight: 600; font-size: 16px;
-            padding: 16px; border-radius: 18px; text-decoration: none;
-            border: 1px solid rgba(79, 172, 254, 0.3);
-        }
-
-        /* 일정 리스트 */
+        /* 일정 및 공지사항, 영상 */
         ul.timeline { list-style: none; padding: 0; margin: 0; }
         ul.timeline li {
             background: rgba(0, 0, 0, 0.2); margin-bottom: 12px;
@@ -93,20 +112,29 @@
         }
         ul.timeline li strong { color: #4facfe; width: 120px; flex-shrink: 0; }
 
-        /* 영상 */
+        .notice-box { border-left: 5px solid #4facfe; }
+        .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 16px; }
+        .notice-box li { margin-bottom: 12px; }
+
         .video-container {
             position: relative; padding-bottom: 56.25%; height: 0;
             overflow: hidden; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* 하단 문의처 */
-        .footer-notice {
-            text-align: center; margin-top: 50px; padding: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8; font-size: 14px;
+        /* 하단 문의처 (전화 버튼 추가) */
+        .contact-box { text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .contact-box p { color: #94a3b8; font-size: 16px; margin-bottom: 20px; }
+        .contact-box strong { color: #fff; }
+        
+        .phone-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(255, 255, 255, 0.05); color: #fff; font-weight: 600;
+            padding: 12px 24px; border-radius: 50px; text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.15); transition: 0.3s;
         }
-        .footer-notice strong { color: #4facfe; }
+        .phone-btn:hover { background: rgba(79, 172, 254, 0.15); border-color: #4facfe; }
+        .phone-btn i { color: #4facfe; }
 
         /* 챗봇 버튼 */
         #chat-btn {
@@ -114,16 +142,14 @@
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: #fff; border: none; border-radius: 50%;
             width: 65px; height: 65px; font-size: 28px; cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.4);
-            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.4); z-index: 1000;
         }
         #chat-window {
             display: none; position: fixed; bottom: 110px; right: 30px;
             width: 350px; height: 480px; background: rgba(15, 20, 30, 0.98);
             backdrop-filter: blur(15px); border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000; flex-direction: column; overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1); z-index: 1000; flex-direction: column; overflow: hidden;
         }
         #chat-header { background: rgba(255, 255, 255, 0.03); color: #fff; padding: 20px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
         #chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
@@ -141,9 +167,10 @@
             <h1>LEADERS FORUM:<br>AGI 시장지배력의 시대</h1>
         </div>
 
-        <div class="glass-card">
+        <div class="glass-card" style="border: 1px solid rgba(118, 75, 162, 0.3);">
             <div class="btn-group">
                 <a href="https://app.sli.do/event/8nqhmbDa3uKhgrNNDKnHKH" target="_blank" class="slido-btn">
+                    <span class="live-dot"></span>
                     <i class="fa-solid fa-comments"></i> 실시간 질문 참여하기 (Slido)
                 </a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSd29WbxL63e6eeEz5Ep3_iVq9e-awEeu3LnEocTJUCXDW2QLA/viewform?usp=publish-editor" target="_blank" class="survey-btn">
@@ -182,9 +209,20 @@
             </div>
         </div>
 
-        <div class="footer-notice">
-            <p>• 원활한 강의 진행을 위해 11:25분까지 식사를 마쳐주시기 바랍니다.</p>
-            <p>• 문의: <strong>인재성장팀</strong> (본 과정 안내 챗봇을 활용해 주세요)</p>
+        <div class="glass-card notice-box">
+            <h2>📌 공지사항</h2>
+            <ul>
+                <li>원활한 강의 진행을 위해 11:25분까지 식사를 마쳐주시기 바랍니다.</li>
+                <li>쓰레기는 배포된 봉투에 담아 지정된 분리 배출함에 버려주세요.</li>
+            </ul>
+        </div>
+
+        <div class="glass-card contact-box">
+            <h2>📞 문의처</h2>
+            <p>본 과정은 <strong>인재성장팀</strong>에서 주관합니다.<br>추가 문의사항은 아래 연락처로 확인해 주세요.</p>
+            <a href="tel:00-0000-0000" class="phone-btn">
+                <i class="fa-solid fa-phone"></i> 00-0000-0000 (테스트)
+            </a>
         </div>
     </div>
 
@@ -218,14 +256,21 @@
             chatInput.value = '';
 
             setTimeout(() => {
-                let reply = "죄송합니다. '장소', '시간', '질문' 등의 키워드로 물어봐 주세요.";
-                if (text.includes('질문') || text.includes('슬라이도')) {
-                    reply = "실시간 질문은 상단의 **보라색 Slido 버튼**을 클릭해 주세요!";
-                } else if (text.includes('장소') || text.includes('어디')) {
+                // 센스 넘치는 기본 거절 멘트 적용 완료!
+                let reply = "죄송합니다. 저는 무료 AI로 만든 챗봇이라 답변을 드릴 수 없는 내용이에요! 유료버전으로 태어나면 다시 답변드릴게요!";
+                
+                if (text.includes('질문') || text.includes('슬라이도') || text.includes('slido')) {
+                    reply = "실시간 질문은 상단의 **보라색 Slido 버튼**을 클릭하시면 참여하실 수 있습니다!";
+                } else if (text.includes('장소') || text.includes('어디') || text.includes('위치')) {
                     reply = "이번 포럼은 **3층 YSK홀**에서 진행됩니다.";
-                } else if (text.includes('문의') || text.includes('팀')) {
-                    reply = "본 과정은 **인재성장팀**에서 주관합니다. 추가 문의사항은 담당자에게 연락 바랍니다.";
+                } else if (text.includes('시간') || text.includes('일정') || text.includes('언제')) {
+                    reply = "포럼은 **5월 28일(목) 11:00 부터 12:50** 까지 진행됩니다. (식사는 11:00부터)";
+                } else if (text.includes('설문') || text.includes('조사') || text.includes('만족도')) {
+                    reply = "만족도 설문조사는 본문 상단의 **하늘색 설문 버튼**을 클릭해 주세요!";
+                } else if (text.includes('문의') || text.includes('팀') || text.includes('연락처')) {
+                    reply = "본 과정은 **인재성장팀**에서 주관합니다. 화면 맨 아래의 통화 버튼을 눌러주세요.";
                 }
+                
                 appendMessage(reply, 'bot');
             }, 600);
         }
