@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEADERS FORUM: AGI 시장지배력의 시대</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 깊이감 있는 다크 그라데이션 배경 */
+        /* 컨설팅 펌 스타일의 세련된 다크 테마 및 배경 디자인 */
         body {
-            background: radial-gradient(circle at 15% 50%, #161a2b, #0d0f18, #050608);
+            background: radial-gradient(circle at 10% 20%, #161a2b, #0d0f18, #050608);
             background-attachment: fixed;
             color: #f1f5f9;
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            font-family: 'Pretendard', -apple-system, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 40px 20px;
@@ -23,51 +24,85 @@
             margin: 0 auto;
         }
 
-        /* 텍스트 그라데이션 */
+        /* 텍스트 그라데이션 및 타이포그래피 디자인 */
         h1, h2 { 
             font-weight: 700;
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0px 4px 20px rgba(0, 242, 254, 0.2);
         }
 
-        h1 { font-size: 34px; margin-top: 0; line-height: 1.35; }
+        h1 { font-size: 34px; margin-top: 0; line-height: 1.35; margin-bottom: 10px; }
 
-        /* Hero 영역 */
-        .hero { text-align: center; margin-bottom: 50px; }
+        /* 히어로 섹션 이미지 디자인 */
+        .hero { text-align: center; margin-bottom: 50px; position: relative; }
         .hero img {
             width: 100%; max-height: 450px; object-fit: cover; 
-            border-radius: 20px; margin-bottom: 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border-radius: 24px; margin-bottom: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .hero p { font-size: 18px; color: #94a3b8; margin: 8px 0; font-weight: 500; }
-        .hero p strong { color: #cbd5e1; }
+        .hero .date-badge { 
+            display: inline-block; background: rgba(79, 172, 254, 0.1); 
+            color: #4facfe; padding: 5px 15px; border-radius: 50px; font-size: 14px; margin-bottom: 15px;
+        }
 
-        /* 글래스모피즘(유리 질감) 카드 UI */
+        /* 글래스모피즘 기반 카드 레이아웃 */
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 24px;
             padding: 35px 40px;
             margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glass-card:hover {
-            transform: translateY(-2px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        .glass-card:hover { transform: translateY(-5px); border: 1px solid rgba(255, 255, 255, 0.12); }
 
         .glass-card h2 {
             font-size: 24px; margin-top: 0; margin-bottom: 24px;
-            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        
-        /* 타임테이블 */
+
+        /* 버튼 디자인 차별화: Slido vs Survey */
+        .btn-group { display: flex; flex-direction: column; gap: 20px; margin-top: 10px; }
+
+        /* 1. Slido 버튼 (네온 퍼플 - 실시간 질문) */
+        .slido-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff; font-weight: 700; font-size: 19px;
+            padding: 22px; border-radius: 18px; text-decoration: none;
+            box-shadow: 0 10px 25px rgba(118, 75, 162, 0.4);
+            transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1);
+        }
+        .slido-btn:hover { transform: scale(1.02); box-shadow: 0 15px 35px rgba(118, 75, 162, 0.6); }
+        .live-dot { 
+            width: 8px; height: 8px; background-color: #ff4b2b; border-radius: 50%; 
+            display: inline-block; margin-right: 5px; animation: pulse 1.5s infinite;
+        }
+
+        /* 2. 설문조사 버튼 (사이버 블루 - 만족도 조사) */
+        .survey-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #4facfe; font-weight: 600; font-size: 17px;
+            padding: 18px; border-radius: 18px; text-decoration: none;
+            border: 1px solid rgba(79, 172, 254, 0.3);
+            transition: all 0.3s ease;
+        }
+        .survey-btn:hover { background: rgba(79, 172, 254, 0.1); color: #fff; }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 75, 43, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); }
+        }
+
+        /* 일정 리스트 스타일 */
         ul.timeline { list-style: none; padding: 0; margin: 0; }
         ul.timeline li {
             background: rgba(0, 0, 0, 0.2); margin-bottom: 12px;
@@ -75,181 +110,136 @@
             display: flex; align-items: center; font-size: 17px;
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
-        ul.timeline li strong { color: #4facfe; width: 150px; flex-shrink: 0; }
+        ul.timeline li strong { color: #4facfe; width: 130px; flex-shrink: 0; }
 
-        /* 유튜브 영상 */
+        /* 영상 컨테이너 */
         .video-container {
             position: relative; padding-bottom: 56.25%; height: 0;
-            overflow: hidden; border-radius: 16px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            overflow: hidden; border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .video-container iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* 설문조사 버튼 */
-        .survey-btn {
-            display: block; width: 100%; text-align: center;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: #000; font-weight: 800; font-size: 20px;
-            padding: 20px; border-radius: 16px; text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.4);
-            transition: all 0.3s ease; border: none; cursor: pointer;
-        }
-        .survey-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 242, 254, 0.6);
-        }
-
-        /* 공지사항 박스 강조 */
-        .notice-box { border-left: 5px solid #4facfe; }
-        .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 16px; }
-        .notice-box li { margin-bottom: 12px; }
-
-        /* 챗봇 스타일 */
+        /* 챗봇 커스텀 스타일 */
         #chat-btn {
             position: fixed; bottom: 30px; right: 30px;
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             color: #fff; border: none; border-radius: 50%;
-            width: 60px; height: 60px; font-size: 26px; cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.4);
-            z-index: 1000; transition: all 0.3s ease;
+            width: 65px; height: 65px; font-size: 28px; cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.4);
+            z-index: 1000; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        #chat-btn:hover { transform: scale(1.1) translateY(-5px); }
+        #chat-btn:hover { transform: rotate(15deg) scale(1.1); }
         #chat-window {
-            display: none; position: fixed; bottom: 100px; right: 30px;
-            width: 340px; height: 450px; background: rgba(15, 20, 30, 0.95);
-            backdrop-filter: blur(10px); border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            display: none; position: fixed; bottom: 110px; right: 30px;
+            width: 350px; height: 480px; background: rgba(15, 20, 30, 0.98);
+            backdrop-filter: blur(15px); border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
             border: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000; flex-direction: column; overflow: hidden;
         }
         #chat-header {
-            background: rgba(255, 255, 255, 0.05); color: #fff; padding: 18px;
-            font-weight: 600; text-align: center; position: relative;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03); color: #fff; padding: 20px;
+            font-weight: 600; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        #chat-close { position: absolute; right: 20px; top: 18px; cursor: pointer; font-weight: bold; color: #94a3b8; }
         #chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .msg { max-width: 80%; padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.5; }
-        .msg.bot { background: rgba(255, 255, 255, 0.08); color: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 4px; }
-        .msg.user { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: #000; font-weight: 500; align-self: flex-end; border-bottom-right-radius: 4px; }
-        #chat-input-area { display: flex; padding: 15px; background: rgba(0, 0, 0, 0.3); border-top: 1px solid rgba(255, 255, 255, 0.05); }
-        #chat-input { flex: 1; padding: 12px 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); color: #fff; outline: none; font-family: inherit; }
-        #chat-send { background: transparent; color: #4facfe; border: none; margin-left: 10px; padding: 0 10px; cursor: pointer; font-weight: bold; font-family: inherit; font-size: 15px; }
+        .msg.bot { background: rgba(255, 255, 255, 0.08); color: #f1f5f9; align-self: flex-start; padding: 12px 16px; border-radius: 16px 16px 16px 4px; font-size: 14px; }
+        .msg.user { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: #000; align-self: flex-end; padding: 12px 16px; border-radius: 16px 16px 4px 16px; font-size: 14px; font-weight: 500; }
+        #chat-input-area { display: flex; padding: 15px; background: rgba(0, 0, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        #chat-input { flex: 1; padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.05); color: #fff; outline: none; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="hero">
             <img src="Gemini_Generated_Image_g6g0owg6g0owg6g0.png" alt="Leaders Forum Hero Image">
-            
+            <div class="date-badge">2026. 05. 28 (THU)</div>
             <h1>LEADERS FORUM:<br>AGI 시장지배력의 시대</h1>
-            <p><strong>일시:</strong> 5월 28일(목) 11:00 ~ 12:50</p>
-            <p><strong>장소:</strong> 3층 YSK홀</p>
+            <p><strong>Speaker:</strong> 김대식 교수 (KAIST)</p>
+            <p><strong>Venue:</strong> 3층 YSK홀</p>
         </div>
 
-        <div class="glass-card">
-            <h2>🎤 강사 소개</h2>
-            <p style="font-size: 20px; font-weight: 600; margin-bottom: 5px; color: #fff;">김대식 교수 (KAIST)</p>
-            <p style="color: #94a3b8; margin-top: 0;">뇌과학 및 AI 분야 권위자</p>
+        <div class="glass-card" style="border: 1px solid rgba(118, 75, 162, 0.3);">
+            <h2 style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">포럼 참여하기</h2>
+            <div class="btn-group">
+                <a href="https://app.sli.do/event/8nqhmbDa3uKhgrNNDKnHKH" target="_blank" class="slido-btn">
+                    <span class="live-dot"></span>
+                    <i class="fa-solid fa-comments"></i> 실시간 질문 참여하기 (Slido)
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd29WbxL63e6eeEz5Ep3_iVq9e-awEeu3LnEocTJUCXDW2QLA/viewform?usp=publish-editor" target="_blank" class="survey-btn">
+                    <i class="fa-solid fa-poll"></i> 포럼 만족도 설문 참여하기
+                </a>
+            </div>
         </div>
 
         <div class="glass-card">
             <h2>⏰ 일정 안내</h2>
             <ul class="timeline">
-                <li><strong>11:00 ~ 11:25</strong> 🍔 도시락 식사 (햄버거와 음료 제공)</li>
-                <li><strong>11:30 ~ 12:50</strong> 🎤 강의 진행 (AGI 시장지배력의 시대)</li>
+                <li><strong>11:00 - 11:25</strong> 🍔 도시락 식사 (YSK홀 제공)</li>
+                <li><strong>11:30 - 12:50</strong> 🎤 본 강의 진행 (AGI의 미래)</li>
             </ul>
-        </div>
-
-        <div class="glass-card" style="text-align: center;">
-            <h2>📝 포럼 만족도 설문조사</h2>
-            <p style="color: #cbd5e1; margin-bottom: 30px;">포럼이 끝난 후, 더 나은 진행을 위해 설문에 꼭 참여해 주세요!</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd29WbxL63e6eeEz5Ep3_iVq9e-awEeu3LnEocTJUCXDW2QLA/viewform?usp=publish-editor" target="_blank" class="survey-btn">
-                설문지 작성하러 가기 ↗
-            </a>
         </div>
 
         <div class="glass-card">
-            <h2>📺 추천 영상 (Pre-Study)</h2>
-            <p style="color: #94a3b8; margin-bottom: 20px; font-size: 16px;">"딱 5년 남았어요" AGI 시대 오면 '이런' 인간만 살아남을 겁니다</p>
+            <h2>📺 Pre-Study 영상</h2>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/89rQSoPFd7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/89rQSoPFd7M" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
-        <div class="glass-card notice-box">
+        <div class="glass-card" style="border-left: 5px solid #4facfe;">
             <h2>📌 공지사항</h2>
-            <ul>
-                <li>원활한 강의 진행을 위해 11시부터 햄버거가 제공됩니다. 강의 시작 전 미리 식사를 부탁드립니다.</li>
-                <li>식사 후 포장지와 빈 캔은 배포된 갈색 봉투에 담아, 반드시 각 층의 분리 배출함에 버려주세요.</li>
-            </ul>
+            <p style="color: #cbd5e1; font-size: 16px;">
+                • 원활한 강의 진행을 위해 11:25분까지 식사를 마쳐주시기 바랍니다.<br>
+                • 쓰레기는 배포된 봉투에 담아 분리 배출함에 버려주세요.
+            </p>
         </div>
     </div>
 
-    <button id="chat-btn">💬</button>
+    <button id="chat-btn"><i class="fa-solid fa-robot"></i></button>
     <div id="chat-window">
-        <div id="chat-header">
-            AI 포럼 안내 챗봇
-            <span id="chat-close">✕</span>
-        </div>
+        <div id="chat-header">포럼 안내 챗봇</div>
         <div id="chat-messages">
-            <div class="msg bot">안녕하세요! LEADERS FORUM 관련해서 궁금한 점을 편하게 물어보세요. (예: 장소, 시간, 강사, 식사, 설문 등)</div>
+            <div class="msg bot">안녕하세요! 포럼 일정, 장소, 실시간 질문(Slido) 링크 등 궁금한 점을 물어보세요!</div>
         </div>
         <div id="chat-input-area">
             <input type="text" id="chat-input" placeholder="질문을 입력하세요..." onkeypress="handleEnter(event)">
-            <button id="chat-send" onclick="sendMessage()">전송</button>
         </div>
     </div>
 
     <script>
         const chatBtn = document.getElementById('chat-btn');
         const chatWindow = document.getElementById('chat-window');
-        const chatClose = document.getElementById('chat-close');
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
 
         chatBtn.addEventListener('click', () => {
             chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
         });
-        chatClose.addEventListener('click', () => {
-            chatWindow.style.display = 'none';
-        });
 
-        function handleEnter(e) {
-            if (e.key === 'Enter') sendMessage();
-        }
+        function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
 
         function sendMessage() {
             const text = chatInput.value.trim();
             if (!text) return;
-
             appendMessage(text, 'user');
             chatInput.value = '';
-            chatMessages.scrollTop = chatMessages.scrollHeight;
 
             setTimeout(() => {
-                let reply = "죄송합니다. 잘 이해하지 못했어요. '일정', '장소', '강사', '식사', '설문'과 같은 키워드로 질문해 주시면 안내해 드릴게요.";
-                
-                if (text.includes('장소') || text.includes('어디') || text.includes('위치')) {
-                    reply = "이번 LEADERS FORUM은 **3층 YSK홀**에서 진행됩니다.";
-                } else if (text.includes('시간') || text.includes('일정') || text.includes('언제')) {
-                    reply = "포럼은 **5월 28일(목) 11:00 부터 12:50** 까지 진행됩니다.";
-                } else if (text.includes('강사') || text.includes('누구') || text.includes('교수')) {
-                    reply = "강연자는 뇌과학 및 AI 분야 권위자이신 **KAIST 김대식 교수님**입니다.";
-                } else if (text.includes('식사') || text.includes('밥') || text.includes('도시락') || text.includes('햄버거')) {
-                    reply = "11시부터 **햄버거와 음료**가 제공됩니다. 원활한 진행을 위해 강의(11:30) 시작 전 미리 식사를 부탁드립니다.";
-                } else if (text.includes('주제') || text.includes('내용')) {
-                    reply = "이번 포럼의 주제는 **'AGI 시장지배력의 시대'** 입니다.";
-                } else if (text.includes('설문') || text.includes('조사') || text.includes('링크')) {
-                    reply = "설문조사는 웹사이트 중간에 있는 **'설문지 작성하러 가기'** 버튼을 누르시면 바로 참여하실 수 있어요!";
+                let reply = "죄송합니다. '장소', '시간', '질문', '설문' 등의 키워드로 물어봐 주세요.";
+                if (text.includes('질문') || text.includes('슬라이도') || text.includes('slido')) {
+                    reply = "실시간 질문은 상단의 **보라색 Slido 버튼**을 클릭하시면 참여하실 수 있습니다!";
+                } else if (text.includes('장소') || text.includes('어디')) {
+                    reply = "이번 포럼은 **3층 YSK홀**에서 진행됩니다.";
+                } else if (text.includes('시간') || text.includes('언제')) {
+                    reply = "식사는 11:00부터, 강의는 11:30부터 시작됩니다.";
+                } else if (text.includes('설문') || text.includes('조사')) {
+                    reply = "만족도 설문조사는 하단의 **하늘색 설문 버튼**을 클릭해 주세요!";
                 }
-
                 appendMessage(reply, 'bot');
                 chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 500);
+            }, 600);
         }
 
         function appendMessage(text, sender) {
@@ -257,6 +247,7 @@
             msgDiv.className = `msg ${sender}`;
             msgDiv.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
     </script>
 </body>
