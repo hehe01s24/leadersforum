@@ -117,15 +117,6 @@
         .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #4facfe; flex-shrink: 0; box-shadow: 0 0 20px rgba(79, 172, 254, 0.2); }
         .profile-text h3 { font-size: 26px; margin: 0 0 12px 0; -webkit-text-fill-color: #fff; background: none; }
         .profile-text p { margin: 6px 0; color: #cbd5e1; font-size: 16px; }
-        .profile-text .bio-tag { color: #4facfe; font-weight: 600; font-size: 14px; margin-top: 20px; display: block; }
-
-        ul.timeline { list-style: none; padding: 0; margin: 0; }
-        ul.timeline li {
-            background: rgba(255, 255, 255, 0.03); margin-bottom: 12px;
-            padding: 20px; border-radius: 15px;
-            display: flex; align-items: center; border: 1px solid rgba(79, 172, 254, 0.15);
-        }
-        ul.timeline li strong { color: #4facfe; width: 140px; flex-shrink: 0; font-size: 17px; }
 
         .video-container {
             position: relative; padding-bottom: 56.25%; height: 0;
@@ -138,18 +129,13 @@
         .phone-btn, .sms-btn {
             display: inline-flex; align-items: center; gap: 10px;
             padding: 15px 30px; border-radius: 50px; text-decoration: none; font-size: 16px; font-weight: 600;
-            transition: 0.3s;
         }
         .phone-btn { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); }
-        .phone-btn:hover { background: rgba(79, 172, 254, 0.2); border-color: #4facfe; }
         .sms-btn { background: rgba(79, 172, 254, 0.15); color: #4facfe; border: 1px solid rgba(79, 172, 254, 0.4); }
 
         @media (max-width: 600px) {
             h1 { font-size: 26px; }
             .profile-container { flex-direction: column; text-align: center; align-items: center; }
-            ul.timeline li { flex-direction: column; align-items: flex-start; gap: 8px; }
-            ul.timeline li strong { width: 100%; }
-            .glass-card { padding: 25px; }
         }
 
         /* 챗봇 스타일 */
@@ -162,7 +148,7 @@
         }
         #chat-window {
             display: none; position: fixed; bottom: 110px; right: 30px;
-            width: 350px; height: 520px; /* 버튼 공간 확보를 위해 살짝 늘림 */
+            width: 350px; height: 520px;
             background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(15px); border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid rgba(79, 172, 254, 0.3);
             z-index: 1000; flex-direction: column; overflow: hidden;
@@ -173,7 +159,7 @@
         .msg.bot { background: rgba(255, 255, 255, 0.08); color: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 4px; }
         .msg.user { background: #005BAC; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; }
         
-        /* 빠른 질문 예시 버튼 영역 */
+        /* 빠른 질문 예시 버튼 */
         #chat-quick-replies {
             display: flex; gap: 8px; padding: 12px 15px 5px 15px; overflow-x: auto;
             background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -252,11 +238,13 @@
         </div>
         
         <div id="chat-quick-replies">
-            <button class="quick-btn" onclick="sendQuickMessage('강의 자료 공유되나요?')">강연 자료</button>
-            <button class="quick-btn" onclick="sendQuickMessage('오늘 식사 메뉴는 뭔가요?')">식사 메뉴</button>
-            <button class="quick-btn" onclick="sendQuickMessage('출결 체크는 어떻게 하나요?')">출결 확인</button>
-            <button class="quick-btn" onclick="sendQuickMessage('AGI가 뭔가요?')">AGI 개념</button>
-            <button class="quick-btn" onclick="sendQuickMessage('Agentic AI가 뭔가요?')">Agentic AI</button>
+            <button class="quick-btn" onclick="sendQuickMessage('시간 안내해 줘')">시간</button>
+            <button class="quick-btn" onclick="sendQuickMessage('장소가 어디야?')">장소</button>
+            <button class="quick-btn" onclick="sendQuickMessage('오늘 메뉴가 뭐야?')">메뉴</button>
+            <button class="quick-btn" onclick="sendQuickMessage('포럼 주제가 뭐야?')">주제</button>
+            <button class="quick-btn" onclick="sendQuickMessage('오늘 강사가 누구야?')">강사</button>
+            <button class="quick-btn" onclick="sendQuickMessage('질문은 어떻게 해?')">질문방법</button>
+            <button class="quick-btn" onclick="sendQuickMessage('설문은 어떻게 해?')">설문방법</button>
         </div>
 
         <div id="chat-input-area">
@@ -276,7 +264,6 @@
 
         function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
 
-        // 빠른 답변 버튼 기능 추가
         function sendQuickMessage(text) {
             chatInput.value = text;
             sendMessage();
@@ -290,26 +277,29 @@
             chatInput.value = '';
 
             setTimeout(() => {
-                let reply = "궁금하신 사항은 하단의 주관부서(인재성장팀)로 문의 부탁드려요! 😊";
-                
+                let reply = "궁금하신 사항은 하단의 주관부서(인사혁신본부 인재성장팀)로 문의 부탁드려요! 😊";
                 const check = (keys) => keys.some(key => lowerText.includes(key));
 
-                if (check(['자료', '파일', '교안', 'ppt', '공유'])) {
-                    reply = "오늘 강연자료는 교수님의 지적 저작물이라 공유가 어려운 점 양해 부탁드립니다. 🙏";
-                } else if (check(['밥', '먹', '식사', '메뉴', '점심', '햄버거', '커피', '음료'])) {
-                    reply = "오늘 점심은 지하 '패티바이번' 햄버거와 커피, 탄산음료가 준비될 예정입니다! 🍔☕";
-                } else if (check(['출결', '출석', '체크', '싸인', '서명'])) {
-                    reply = "별도의 출결 체크는 진행하지 않으니 편하게 참석해 주세요! ✨";
-                } else if (check(['설문', '조사', '만족도', '링크'])) {
-                    reply = "강의 종료 후 본문 상단의 설문조사 버튼을 통해 언제든지 참여 가능합니다! 📝";
-                } else if (check(['agentic', '에이전틱', '에이전트'])) {
-                    reply = "Agentic AI는 사람의 지시를 기다리지 않고 스스로 목표를 세워 능동적으로 업무를 수행하는 차세대 인공지능을 뜻해요! 🤖";
+                if (check(['시간', '언제', '몇시', '일정'])) {
+                    reply = "11:00부터 **도시락 식사**가 시작되며, 11:30부터 **본 강연**이 시작되어 12:50에 종료될 예정입니다. ⏰";
+                } else if (check(['장소', '어디', '위치', '홀'])) {
+                    reply = "이번 포럼은 본사 **3층 YSK홀**에서 진행됩니다! 📍";
+                } else if (check(['메뉴', '밥', '먹', '음료', '햄버거', '커피'])) {
+                    reply = "오늘 점심은 지하 '패티바이번'의 **햄버거**가 제공되며, 커피와 탄산음료를 함께 즐기실 수 있습니다. 🍔🥤";
+                } else if (check(['주제', '제목', '내용'])) {
+                    reply = "이번 포럼의 주제는 **'Agentic AI 시대 경제와 인류'** 입니다. 급변하는 AI 트렌드를 김대식 교수님과 함께 살펴봅니다! 🤖";
+                } else if (check(['강사', '교수', '누구'])) {
+                    reply = "오늘의 강연자는 **카이스트 전기 및 전자공학부의 김대식 교수님**입니다! 🎤";
+                } else if (check(['질문', '방법', '슬라이도', 'slido'])) {
+                    reply = "강의 중 궁금하신 점은 상단의 **'실시간 질문 참여 (Slido)'** 버튼을 눌러 교수님께 직접 질문하실 수 있습니다! 🎤";
+                } else if (check(['설문', '만족도'])) {
+                    reply = "강연 종료 후 상단의 **'포럼 만족도 설문 참여'** 버튼을 클릭하여 소중한 의견을 들려주세요! 📝";
+                } else if (check(['자료', '공유', '교안'])) {
+                    reply = "오늘 강연자료는 교수님 개인의 지적 저작물이라 공유가 불가한 점 양해 부탁드립니다. 🙏";
                 } else if (check(['agi', '범용'])) {
-                    reply = "AGI는 특정 분야에 국한되지 않고, 사람처럼 모든 지적 능력을 스스로 학습하고 해결할 수 있는 범용 인공지능입니다! 🚀";
-                } else if (check(['질문', '궁금', '물어', '슬라이도', 'slido', '강의 내용'])) {
-                    reply = "강의 내용에 대한 질문은 상단의 **Slido 버튼**을 눌러 교수님께 직접 전달해 주세요! 🎤";
-                } else if (check(['시간', '언제', '일정', '끝나', '장소', '어디'])) {
-                    reply = "강연은 **3층 YSK홀**에서 진행되며, 11:00부터 식사, 11:30부터 강연이 시작되어 12:50에 종료될 예정입니다! ⏰";
+                    reply = "AGI는 사람처럼 모든 지적 능력을 스스로 학습하고 해결할 수 있는 미래형 인공지능을 의미합니다! 🚀";
+                } else if (check(['agentic', '에이전틱'])) {
+                    reply = "Agentic AI는 스스로 목표를 세우고 판단해 능동적으로 업무를 수행하는 차세대 AI 시스템입니다! 🤖";
                 }
 
                 appendMessage(reply, 'bot');
