@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 배경 및 기본 레이아웃 */
         body {
             background: radial-gradient(circle at 15% 50%, #1a2035, #121212, #050608);
             background-attachment: fixed;
@@ -19,7 +18,6 @@
             letter-spacing: -0.02em;
         }
 
-        /* 유안타증권 추상적 로고 워터마크 */
         .bg-texture {
             position: fixed;
             top: 50%;
@@ -36,7 +34,6 @@
             pointer-events: none;
         }
 
-        /* 상단 네비게이션 바 */
         .top-nav {
             display: flex;
             align-items: center;
@@ -53,7 +50,6 @@
 
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
 
-        /* 타이틀 그라데이션 */
         h1, h2, h3 { 
             font-weight: 700;
             background: linear-gradient(135deg, #4facfe 0%, #005BAC 100%);
@@ -63,7 +59,6 @@
 
         h1 { font-size: 32px; margin-top: 0; line-height: 1.35; margin-bottom: 20px; text-align: center; }
 
-        /* 배너 이미지 */
         .hero { text-align: center; margin-bottom: 40px; }
         .hero img.main-banner {
             width: 100%; max-height: 400px; object-fit: cover; 
@@ -77,7 +72,6 @@
             border: 1px solid rgba(79, 172, 254, 0.3);
         }
 
-        /* 공통 카드 스타일 (글래스모피즘) */
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(79, 172, 254, 0.25);
@@ -93,7 +87,6 @@
             padding-bottom: 15px; margin-top: 0; margin-bottom: 25px; font-size: 26px; 
         }
 
-        /* 버튼 디자인 */
         .btn-group { display: flex; flex-direction: column; gap: 15px; }
         .slido-btn {
             display: flex; align-items: center; justify-content: center; gap: 12px;
@@ -120,14 +113,12 @@
             100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); }
         }
 
-        /* 강사 프로필 레이아웃 */
         .profile-container { display: flex; gap: 30px; align-items: flex-start; }
         .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #4facfe; flex-shrink: 0; box-shadow: 0 0 20px rgba(79, 172, 254, 0.2); }
         .profile-text h3 { font-size: 26px; margin: 0 0 12px 0; -webkit-text-fill-color: #fff; background: none; }
         .profile-text p { margin: 6px 0; color: #cbd5e1; font-size: 16px; }
         .profile-text .bio-tag { color: #4facfe; font-weight: 600; font-size: 14px; margin-top: 20px; display: block; }
 
-        /* 일정 목록 */
         ul.timeline { list-style: none; padding: 0; margin: 0; }
         ul.timeline li {
             background: rgba(255, 255, 255, 0.03); margin-bottom: 12px;
@@ -136,19 +127,16 @@
         }
         ul.timeline li strong { color: #4facfe; width: 140px; flex-shrink: 0; font-size: 17px; }
 
-        /* 유튜브 영상 컨테이너 */
         .video-container {
             position: relative; padding-bottom: 56.25%; height: 0;
             overflow: hidden; border-radius: 20px; border: 1px solid rgba(79, 172, 254, 0.2);
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* 공지사항 박스 */
         .notice-box { border-left: 6px solid #4facfe; }
         .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 16px; }
         .notice-box li { margin-bottom: 10px; }
 
-        /* 하단 문의처 및 연락처 버튼 */
         .contact-box { text-align: center; }
         .contact-actions { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .phone-btn, .sms-btn {
@@ -160,7 +148,6 @@
         .phone-btn:hover { background: rgba(79, 172, 254, 0.2); border-color: #4facfe; }
         .sms-btn { background: rgba(79, 172, 254, 0.15); color: #4facfe; border: 1px solid rgba(79, 172, 254, 0.4); }
 
-        /* 모바일 대응 반응형 디자인 */
         @media (max-width: 600px) {
             h1 { font-size: 26px; }
             .profile-container { flex-direction: column; text-align: center; align-items: center; }
@@ -169,7 +156,6 @@
             .glass-card { padding: 25px; }
         }
 
-        /* 챗봇 UI */
         #chat-btn {
             position: fixed; bottom: 30px; right: 30px;
             background: linear-gradient(135deg, #4facfe 0%, #005BAC 100%);
@@ -251,17 +237,9 @@
             </div>
         </div>
 
-        <div class="glass-card notice-box">
-            <h2>📌 식사 및 공지사항</h2>
-            <ul>
-                <li>원활한 강의 진행을 위해 11시부터 햄버거가 제공됩니다. 강의 시작 전 미리 식사를 부탁드립니다.</li>
-                <li>식사 후 포장지와 빈 캔은 배포된 봉투에 담아, 반드시 각 층의 분리 배출함에 버려주세요.</li>
-            </ul>
-        </div>
-
         <div class="glass-card contact-box">
             <h2>📞 문의처</h2>
-            <p><strong>인사혁신본부 인재성장팀</strong> 주관</p>
+            <p>궁금하신 사항은 아래의 주관부서로 연락주시면 됩니다.<br><strong>인사혁신본부 인재성장팀</strong></p>
             <div class="contact-actions">
                 <a href="tel:02-3770-2408" class="phone-btn">
                     <i class="fa-solid fa-phone"></i> 02-3770-2408
@@ -277,7 +255,7 @@
     <div id="chat-window">
         <div id="chat-header">포럼 안내 챗봇</div>
         <div id="chat-messages">
-            <div class="msg bot">안녕하세요! 포럼 일정이나 실시간 질문 링크 등에 대해 궁금한 점을 물어보세요!</div>
+            <div class="msg bot">안녕하세요! ✨ 저는 YSK 리더스포럼 봇이에요. 🤖<br><br>저는 아직 애기라서 🐣 한정된 내용에만 답변드릴 수 있어요~!<br>제가 답변드리지 못하는 사항은 인재성장팀으로 문의주세요! 📞</div>
         </div>
         <div id="chat-input-area">
             <input type="text" id="chat-input" placeholder="질문을 입력하세요..." onkeypress="handleEnter(event)">
@@ -303,19 +281,38 @@
             chatInput.value = '';
 
             setTimeout(() => {
-                let reply = "죄송합니다. 저는 무료 AI로 만든 챗봇이라 답변을 드릴 수 없는 내용이에요! 유료버전으로 태어나면 다시 답변드릴게요!";
-                
-                if (text.includes('질문') || text.includes('슬라이도') || text.includes('slido')) {
-                    reply = "실시간 질문은 상단의 **Slido 버튼**을 클릭해 주세요!";
-                } else if (text.includes('장소') || text.includes('어디') || text.includes('위치')) {
-                    reply = "이번 포럼은 **3층 YSK홀**에서 진행됩니다.";
-                } else if (text.includes('시간') || text.includes('일정') || text.includes('언제')) {
-                    reply = "포럼은 **5월 28일(목) 11:00 부터 12:50** 까지 진행됩니다.";
-                } else if (text.includes('식사') || text.includes('밥') || text.includes('도시락') || text.includes('햄버거') || text.includes('쓰레기')) {
-                    reply = "11시부터 **햄버거와 음료**가 제공됩니다. 식사 후 쓰레기는 배포된 봉투에 담아 분리 배출함에 버려주세요!";
-                } else if (text.includes('문의') || text.includes('팀') || text.includes('연락처')) {
-                    reply = "본 과정은 **인사혁신본부 인재성장팀**에서 주관합니다. 화면 맨 아래의 통화/문자 버튼을 눌러주세요.";
+                // 기본 답변 (Rule 7 반영 - 그 외 모든 질문)
+                let reply = "궁금하신 사항은 화면 하단의 주관부서(인사혁신본부 인재성장팀)로 연락주시면 친절히 안내해 드리겠습니다. 😊";
+
+                // Rule 1: 강연자료 공유 불가
+                if (text.includes('자료') || text.includes('파일') || text.includes('교안') || text.includes('공유')) {
+                    reply = "오늘 강연자료는 교수님 개인의 지적 저작물이라 공유가 불가합니다. 양해 부탁드립니다.";
+                } 
+                // Rule 3, 4: 커피, 탄산음료, 햄버거 메뉴 안내
+                else if (text.includes('커피') || text.includes('음료') || text.includes('메뉴') || text.includes('식사') || text.includes('밥') || text.includes('점심')) {
+                    reply = "지하에 위치한 '패티바이번'의 햄버거가 메뉴로 예정되어 있으며, 커피와 탄산음료를 함께 제공할 예정입니다.";
+                } 
+                // Rule 5: 출결 안내
+                else if (text.includes('출결') || text.includes('출석') || text.includes('체크')) {
+                    reply = "본 과정은 별도 출결은 진행되지 않습니다. 편안하게 참석해 주시면 됩니다.";
+                } 
+                // Rule 8: 설문조사 안내
+                else if (text.includes('설문') || text.includes('조사') || text.includes('만족도')) {
+                    reply = "강의 종료 후 자유롭게 언제든지 화면 상단의 '포럼 만족도 설문 참여' 버튼을 눌러 진행해 주시면 됩니다.";
+                } 
+                // Rule 10: Agentic AI 개념
+                else if (text.toLowerCase().includes('agentic ai') || text.includes('에이전틱')) {
+                    reply = "Agentic AI(자율적 AI)는 사람의 지시를 단순히 기다리기만 하는 것이 아니라, 스스로 목표를 세우고 판단하여 능동적으로 업무를 수행하는 차세대 인공지능을 의미합니다.";
+                } 
+                // Rule 9: AGI 개념
+                else if (text.toLowerCase().includes('agi') || text.includes('범용')) {
+                    reply = "AGI(범용 인공지능)는 특정 분야에 국한되지 않고, 사람이 할 수 있는 모든 지적인 능력을 스스로 학습하고 해결할 수 있는 사람 수준의 인공지능을 뜻합니다.";
+                } 
+                // Rule 11 & Rule 6: 강의 내용 질문 및 일반 질문
+                else if (text.includes('강의 내용') || text.includes('질문') || text.includes('슬라이도') || text.includes('slido')) {
+                    reply = "강의 내용에 대한 질문이나 기타 질문은 상단의 '실시간 질문 참여 (Slido)' 버튼을 누르시고 교수님께 직접 질문해 주시면 됩니다!";
                 }
+
                 appendMessage(reply, 'bot');
             }, 600);
         }
