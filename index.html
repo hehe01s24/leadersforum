@@ -133,10 +133,6 @@
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .notice-box { border-left: 6px solid #4facfe; }
-        .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 16px; }
-        .notice-box li { margin-bottom: 10px; }
-
         .contact-box { text-align: center; }
         .contact-actions { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .phone-btn, .sms-btn {
@@ -156,6 +152,7 @@
             .glass-card { padding: 25px; }
         }
 
+        /* 챗봇 스타일 */
         #chat-btn {
             position: fixed; bottom: 30px; right: 30px;
             background: linear-gradient(135deg, #4facfe 0%, #005BAC 100%);
@@ -165,7 +162,7 @@
         }
         #chat-window {
             display: none; position: fixed; bottom: 110px; right: 30px;
-            width: 350px; height: 500px;
+            width: 350px; height: 520px; /* 버튼 공간 확보를 위해 살짝 늘림 */
             background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(15px); border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid rgba(79, 172, 254, 0.3);
             z-index: 1000; flex-direction: column; overflow: hidden;
@@ -175,33 +172,39 @@
         .msg { max-width: 85%; padding: 12px 18px; border-radius: 18px; font-size: 14px; line-height: 1.6; }
         .msg.bot { background: rgba(255, 255, 255, 0.08); color: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 4px; }
         .msg.user { background: #005BAC; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; }
-        #chat-input-area { display: flex; padding: 15px; background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        /* 빠른 질문 예시 버튼 영역 */
+        #chat-quick-replies {
+            display: flex; gap: 8px; padding: 12px 15px 5px 15px; overflow-x: auto;
+            background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(255, 255, 255, 0.1);
+            scrollbar-width: none; -ms-overflow-style: none;
+        }
+        #chat-quick-replies::-webkit-scrollbar { display: none; }
+        .quick-btn {
+            background: rgba(79, 172, 254, 0.1); border: 1px solid rgba(79, 172, 254, 0.3);
+            color: #4facfe; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
+            cursor: pointer; white-space: nowrap; transition: 0.3s;
+        }
+        .quick-btn:hover { background: rgba(79, 172, 254, 0.25); color: #fff; border-color: #4facfe; }
+        
+        #chat-input-area { display: flex; padding: 10px 15px 15px 15px; background: rgba(0, 0, 0, 0.5); }
         #chat-input { flex: 1; padding: 12px 15px; border-radius: 12px; border: 1px solid #333; background: #1a1a1a; color: #fff; outline: none; }
     </style>
 </head>
 <body>
     <div class="bg-texture"></div>
-    
-    <nav class="top-nav">
-        <img src="logo2.png" alt="Yuanta Securities">
-    </nav>
-
+    <nav class="top-nav"><img src="logo2.png" alt="Yuanta Securities"></nav>
     <div class="container">
         <div class="hero">
-            <img src="Gemini_Generated_Image_g6g0owg6g0owg6g0.png" class="main-banner" alt="Leaders Forum Banner">
+            <img src="Gemini_Generated_Image_g6g0owg6g0owg6g0.png" class="main-banner" alt="Banner">
             <div class="date-badge">2026. 05. 28 (THU)</div>
             <h1>LEADERS FORUM:<br>Agentic AI 시대 경제와 인류</h1>
         </div>
 
         <div class="glass-card">
             <div class="btn-group">
-                <a href="https://app.sli.do/event/8nqhmbDa3uKhgrNNDKnHKH" target="_blank" class="slido-btn">
-                    <span class="live-dot"></span>
-                    <i class="fa-solid fa-comments"></i> 실시간 질문 참여 (Slido)
-                </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd29WbxL63e6eeEz5Ep3_iVq9e-awEeu3LnEocTJUCXDW2QLA/viewform?usp=publish-editor" target="_blank" class="survey-btn">
-                    <i class="fa-solid fa-poll"></i> 포럼 만족도 설문 참여
-                </a>
+                <a href="https://app.sli.do/event/8nqhmbDa3uKhgrNNDKnHKH" target="_blank" class="slido-btn"><span class="live-dot"></span><i class="fa-solid fa-comments"></i> 실시간 질문 참여 (Slido)</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd29WbxL63e6eeEz5Ep3_iVq9e-awEeu3LnEocTJUCXDW2QLA/viewform?usp=publish-editor" target="_blank" class="survey-btn"><i class="fa-solid fa-poll"></i> 포럼 만족도 설문 참여</a>
             </div>
         </div>
 
@@ -211,42 +214,32 @@
                 <img src="professor_kim.jpg" class="profile-img" alt="김대식 교수">
                 <div class="profile-text">
                     <h3>김대식 교수</h3>
-                    <p>• 카이스트 전기 및 전자공학부</p>
-                    <p>• 독일 막스플랑크 뇌과학 연구소 박사</p>
-                    <p>• 미국 M.I.T. 포스닥 / 일본 이화학연구소 (RIKEN) 연구원</p>
-                    <p>• 미국 미네소타 대학교 조교수 / 보스턴 대학교 부교수</p>
-                    <span class="bio-tag">[주요 저서]</span>
-                    <p>《AGI, 천사인가 악마인가》, 《존재하지 않는 영화》, 《ChatGPT에게 묻는 인류의 미래》 등</p>
+                    <p>• 카이스트 전기 및 전자공학부 / 독일 막스플랑크 박사</p>
+                    <p>• 미국 M.I.T. 포스닥 / 일본 이화학연구소 (RIKEN)</p>
+                    <p>《AGI, 천사인가 악마인가》, 《존재하지 않는 영화》 등 저술</p>
                 </div>
             </div>
         </div>
 
         <div class="glass-card">
             <h2>⏰ 일정 안내</h2>
-            <ul class="timeline">
-                <li><strong>11:00 ~ 11:25</strong> 🍔 도시락 식사 (햄버거와 음료 제공)</li>
-                <li><strong>11:30 ~ 12:50</strong> 🎤 본 강의 진행 (YSK홀)</li>
-            </ul>
+            <p>• 11:00 ~ 11:25 : 🍔 도시락 식사 (패티바이번 햄버거 제공)<br>• 11:30 ~ 12:50 : 🎤 본 강의 진행 (YSK홀)</p>
         </div>
 
         <div class="glass-card">
             <h2>📺 Pre-Study 영상</h2>
-            <p style="color: #94a3b8; margin-top: 0; margin-bottom: 20px; font-size: 15px;">"딱 5년 남았어요" AGI 시대 오면 '이런' 인간만 살아남을 겁니다</p>
+            <p style="color: #94a3b8; margin-top: 0; margin-bottom: 20px; font-size: 15px;">김대식 “지금은 모든 인간이 새롭게 경쟁할 수 있는 기회”</p>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/89rQSoPFd7M" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/yZEtpzcCcYc" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="glass-card contact-box">
             <h2>📞 문의처</h2>
-            <p>궁금하신 사항은 아래의 주관부서로 연락주시면 됩니다.<br><strong>인사혁신본부 인재성장팀</strong></p>
+            <p><strong>인사혁신본부 인재성장팀</strong></p>
             <div class="contact-actions">
-                <a href="tel:02-3770-2408" class="phone-btn">
-                    <i class="fa-solid fa-phone"></i> 02-3770-2408
-                </a>
-                <a href="sms:02-3770-2408" class="sms-btn">
-                    <i class="fa-solid fa-comment-dots"></i> 문자 보내기
-                </a>
+                <a href="tel:02-3770-2408" class="phone-btn"><i class="fa-solid fa-phone"></i> 02-3770-2408</a>
+                <a href="sms:02-3770-2408" class="sms-btn"><i class="fa-solid fa-comment-dots"></i> 문자 보내기</a>
             </div>
         </div>
     </div>
@@ -257,8 +250,17 @@
         <div id="chat-messages">
             <div class="msg bot">안녕하세요! ✨ 저는 YSK 리더스포럼 봇이에요. 🤖<br><br>저는 아직 애기라서 🐣 한정된 내용에만 답변드릴 수 있어요~!<br>제가 답변드리지 못하는 사항은 인재성장팀으로 문의주세요! 📞</div>
         </div>
+        
+        <div id="chat-quick-replies">
+            <button class="quick-btn" onclick="sendQuickMessage('강의 자료 공유되나요?')">강연 자료</button>
+            <button class="quick-btn" onclick="sendQuickMessage('오늘 식사 메뉴는 뭔가요?')">식사 메뉴</button>
+            <button class="quick-btn" onclick="sendQuickMessage('출결 체크는 어떻게 하나요?')">출결 확인</button>
+            <button class="quick-btn" onclick="sendQuickMessage('AGI가 뭔가요?')">AGI 개념</button>
+            <button class="quick-btn" onclick="sendQuickMessage('Agentic AI가 뭔가요?')">Agentic AI</button>
+        </div>
+
         <div id="chat-input-area">
-            <input type="text" id="chat-input" placeholder="질문을 입력하세요..." onkeypress="handleEnter(event)">
+            <input type="text" id="chat-input" placeholder="질문을 직접 입력하셔도 됩니다..." onkeypress="handleEnter(event)">
         </div>
     </div>
 
@@ -267,50 +269,47 @@
         const chatWindow = document.getElementById('chat-window');
         const chatMessages = document.getElementById('chat-messages');
         const chatInput = document.getElementById('chat-input');
-
-        chatBtn.addEventListener('click', () => {
-            chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+        
+        chatBtn.addEventListener('click', () => { 
+            chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex'; 
         });
 
         function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
 
+        // 빠른 답변 버튼 기능 추가
+        function sendQuickMessage(text) {
+            chatInput.value = text;
+            sendMessage();
+        }
+
         function sendMessage() {
             const text = chatInput.value.trim();
+            const lowerText = text.toLowerCase();
             if (!text) return;
             appendMessage(text, 'user');
             chatInput.value = '';
 
             setTimeout(() => {
-                // 기본 답변 (Rule 7 반영 - 그 외 모든 질문)
-                let reply = "궁금하신 사항은 화면 하단의 주관부서(인사혁신본부 인재성장팀)로 연락주시면 친절히 안내해 드리겠습니다. 😊";
+                let reply = "궁금하신 사항은 하단의 주관부서(인재성장팀)로 문의 부탁드려요! 😊";
+                
+                const check = (keys) => keys.some(key => lowerText.includes(key));
 
-                // Rule 1: 강연자료 공유 불가
-                if (text.includes('자료') || text.includes('파일') || text.includes('교안') || text.includes('공유')) {
-                    reply = "오늘 강연자료는 교수님 개인의 지적 저작물이라 공유가 불가합니다. 양해 부탁드립니다.";
-                } 
-                // Rule 3, 4: 커피, 탄산음료, 햄버거 메뉴 안내
-                else if (text.includes('커피') || text.includes('음료') || text.includes('메뉴') || text.includes('식사') || text.includes('밥') || text.includes('점심')) {
-                    reply = "지하에 위치한 '패티바이번'의 햄버거가 메뉴로 예정되어 있으며, 커피와 탄산음료를 함께 제공할 예정입니다.";
-                } 
-                // Rule 5: 출결 안내
-                else if (text.includes('출결') || text.includes('출석') || text.includes('체크')) {
-                    reply = "본 과정은 별도 출결은 진행되지 않습니다. 편안하게 참석해 주시면 됩니다.";
-                } 
-                // Rule 8: 설문조사 안내
-                else if (text.includes('설문') || text.includes('조사') || text.includes('만족도')) {
-                    reply = "강의 종료 후 자유롭게 언제든지 화면 상단의 '포럼 만족도 설문 참여' 버튼을 눌러 진행해 주시면 됩니다.";
-                } 
-                // Rule 10: Agentic AI 개념
-                else if (text.toLowerCase().includes('agentic ai') || text.includes('에이전틱')) {
-                    reply = "Agentic AI(자율적 AI)는 사람의 지시를 단순히 기다리기만 하는 것이 아니라, 스스로 목표를 세우고 판단하여 능동적으로 업무를 수행하는 차세대 인공지능을 의미합니다.";
-                } 
-                // Rule 9: AGI 개념
-                else if (text.toLowerCase().includes('agi') || text.includes('범용')) {
-                    reply = "AGI(범용 인공지능)는 특정 분야에 국한되지 않고, 사람이 할 수 있는 모든 지적인 능력을 스스로 학습하고 해결할 수 있는 사람 수준의 인공지능을 뜻합니다.";
-                } 
-                // Rule 11 & Rule 6: 강의 내용 질문 및 일반 질문
-                else if (text.includes('강의 내용') || text.includes('질문') || text.includes('슬라이도') || text.includes('slido')) {
-                    reply = "강의 내용에 대한 질문이나 기타 질문은 상단의 '실시간 질문 참여 (Slido)' 버튼을 누르시고 교수님께 직접 질문해 주시면 됩니다!";
+                if (check(['자료', '파일', '교안', 'ppt', '공유'])) {
+                    reply = "오늘 강연자료는 교수님의 지적 저작물이라 공유가 어려운 점 양해 부탁드립니다. 🙏";
+                } else if (check(['밥', '먹', '식사', '메뉴', '점심', '햄버거', '커피', '음료'])) {
+                    reply = "오늘 점심은 지하 '패티바이번' 햄버거와 커피, 탄산음료가 준비될 예정입니다! 🍔☕";
+                } else if (check(['출결', '출석', '체크', '싸인', '서명'])) {
+                    reply = "별도의 출결 체크는 진행하지 않으니 편하게 참석해 주세요! ✨";
+                } else if (check(['설문', '조사', '만족도', '링크'])) {
+                    reply = "강의 종료 후 본문 상단의 설문조사 버튼을 통해 언제든지 참여 가능합니다! 📝";
+                } else if (check(['agentic', '에이전틱', '에이전트'])) {
+                    reply = "Agentic AI는 사람의 지시를 기다리지 않고 스스로 목표를 세워 능동적으로 업무를 수행하는 차세대 인공지능을 뜻해요! 🤖";
+                } else if (check(['agi', '범용'])) {
+                    reply = "AGI는 특정 분야에 국한되지 않고, 사람처럼 모든 지적 능력을 스스로 학습하고 해결할 수 있는 범용 인공지능입니다! 🚀";
+                } else if (check(['질문', '궁금', '물어', '슬라이도', 'slido', '강의 내용'])) {
+                    reply = "강의 내용에 대한 질문은 상단의 **Slido 버튼**을 눌러 교수님께 직접 전달해 주세요! 🎤";
+                } else if (check(['시간', '언제', '일정', '끝나', '장소', '어디'])) {
+                    reply = "강연은 **3층 YSK홀**에서 진행되며, 11:00부터 식사, 11:30부터 강연이 시작되어 12:50에 종료될 예정입니다! ⏰";
                 }
 
                 appendMessage(reply, 'bot');
