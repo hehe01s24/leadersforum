@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* 배경 및 기본 레이아웃 */
         body {
             background: radial-gradient(circle at 15% 50%, #1a2035, #121212, #050608);
             background-attachment: fixed;
@@ -16,9 +17,9 @@
             margin: 0;
             padding: 0;
             letter-spacing: -0.02em;
-            position: relative;
         }
 
+        /* 유안타증권 추상적 로고 워터마크 */
         .bg-texture {
             position: fixed;
             top: 50%;
@@ -35,22 +36,24 @@
             pointer-events: none;
         }
 
+        /* 상단 네비게이션 바 */
         .top-nav {
             display: flex;
             align-items: center;
             padding: 16px 5vw;
-            background: rgba(18, 18, 18, 0.8);
+            background: rgba(18, 18, 18, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(79, 172, 254, 0.15);
+            border-bottom: 1px solid rgba(79, 172, 254, 0.2);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-        .top-nav img { height: 24px; }
+        .top-nav img { height: 26px; }
 
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
 
+        /* 타이틀 그라데이션 */
         h1, h2, h3 { 
             font-weight: 700;
             background: linear-gradient(135deg, #4facfe 0%, #005BAC 100%);
@@ -58,124 +61,148 @@
             -webkit-text-fill-color: transparent;
         }
 
-        h1 { font-size: 28px; margin-top: 0; line-height: 1.35; margin-bottom: 15px; text-align: center; }
+        h1 { font-size: 32px; margin-top: 0; line-height: 1.35; margin-bottom: 20px; text-align: center; }
 
+        /* 배너 이미지 */
         .hero { text-align: center; margin-bottom: 40px; }
         .hero img.main-banner {
             width: 100%; max-height: 400px; object-fit: cover; 
             border-radius: 24px; margin-bottom: 25px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .hero .date-badge { 
-            display: inline-block; background: rgba(79, 172, 254, 0.1); 
-            color: #4facfe; padding: 6px 16px; border-radius: 50px; font-size: 14px; margin-bottom: 12px;
+            display: inline-block; background: rgba(79, 172, 254, 0.15); 
+            color: #4facfe; padding: 8px 20px; border-radius: 50px; font-size: 15px; margin-bottom: 15px;
+            border: 1px solid rgba(79, 172, 254, 0.3);
         }
 
+        /* 공통 카드 스타일 (글래스모피즘) */
         .glass-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(79, 172, 254, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(79, 172, 254, 0.25);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 24px;
-            padding: 30px;
-            margin-bottom: 35px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
         }
-        .glass-card h2 { border-bottom: 1px solid rgba(79, 172, 254, 0.2); padding-bottom: 12px; margin-top: 0; margin-bottom: 24px; font-size: 24px; }
+        .glass-card h2 { 
+            border-bottom: 1px solid rgba(79, 172, 254, 0.3); 
+            padding-bottom: 15px; margin-top: 0; margin-bottom: 25px; font-size: 26px; 
+        }
 
+        /* 버튼 디자인 */
         .btn-group { display: flex; flex-direction: column; gap: 15px; }
         .slido-btn {
             display: flex; align-items: center; justify-content: center; gap: 12px;
             background: linear-gradient(135deg, #005BAC 0%, #4facfe 100%);
-            color: #fff; font-weight: 700; font-size: 18px;
-            padding: 20px; border-radius: 18px; text-decoration: none;
+            color: #fff; font-weight: 700; font-size: 19px;
+            padding: 22px; border-radius: 18px; text-decoration: none;
             box-shadow: 0 10px 25px rgba(0, 91, 172, 0.4);
+            transition: transform 0.3s ease;
         }
+        .slido-btn:hover { transform: scale(1.02); }
+        
         .survey-btn {
             display: flex; align-items: center; justify-content: center; gap: 12px;
-            background: rgba(79, 172, 254, 0.05);
+            background: rgba(79, 172, 254, 0.1);
             color: #4facfe; font-weight: 600; font-size: 17px;
             padding: 18px; border-radius: 18px; text-decoration: none;
-            border: 1px solid rgba(79, 172, 254, 0.3);
+            border: 1px solid rgba(79, 172, 254, 0.4);
         }
-        .live-dot { width: 8px; height: 8px; background-color: #ff4b2b; border-radius: 50%; animation: pulse 1.5s infinite; }
+        .live-dot { width: 10px; height: 10px; background-color: #ff4b2b; border-radius: 50%; animation: pulse 1.5s infinite; }
 
         @keyframes pulse {
-            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0.7); }
-            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 75, 43, 0); }
-            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); }
+            0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 75, 43, 0); }
+            100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); }
         }
 
-        .profile-container { display: flex; gap: 25px; align-items: flex-start; }
-        .profile-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 2px solid #4facfe; flex-shrink: 0; }
-        .profile-text h3 { font-size: 24px; margin: 0 0 10px 0; -webkit-text-fill-color: #fff; background: none; }
-        .profile-text p { margin: 5px 0; color: #cbd5e1; font-size: 15px; }
+        /* 강사 프로필 레이아웃 */
+        .profile-container { display: flex; gap: 30px; align-items: flex-start; }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #4facfe; flex-shrink: 0; box-shadow: 0 0 20px rgba(79, 172, 254, 0.2); }
+        .profile-text h3 { font-size: 26px; margin: 0 0 12px 0; -webkit-text-fill-color: #fff; background: none; }
+        .profile-text p { margin: 6px 0; color: #cbd5e1; font-size: 16px; }
+        .profile-text .bio-tag { color: #4facfe; font-weight: 600; font-size: 14px; margin-top: 20px; display: block; }
 
-        @media (max-width: 600px) {
-            .profile-container { flex-direction: column; text-align: center; align-items: center; }
-        }
-
+        /* 일정 목록 */
         ul.timeline { list-style: none; padding: 0; margin: 0; }
         ul.timeline li {
             background: rgba(255, 255, 255, 0.03); margin-bottom: 12px;
-            padding: 15px 20px; border-radius: 14px;
-            display: flex; align-items: center; border: 1px solid rgba(79, 172, 254, 0.1);
+            padding: 20px; border-radius: 15px;
+            display: flex; align-items: center; border: 1px solid rgba(79, 172, 254, 0.15);
         }
-        ul.timeline li strong { color: #4facfe; width: 140px; flex-shrink: 0; } /* 시간을 위해 너비 약간 넓힘 */
+        ul.timeline li strong { color: #4facfe; width: 140px; flex-shrink: 0; font-size: 17px; }
 
-        /* 유튜브 영상 컨테이너 (부활) */
+        /* 유튜브 영상 컨테이너 */
         .video-container {
             position: relative; padding-bottom: 56.25%; height: 0;
-            overflow: hidden; border-radius: 16px; border: 1px solid rgba(79, 172, 254, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden; border-radius: 20px; border: 1px solid rgba(79, 172, 254, 0.2);
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .notice-box { border-left: 5px solid #4facfe; }
-        .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 15px; }
-        .notice-box li { margin-bottom: 8px; }
+        /* 공지사항 박스 */
+        .notice-box { border-left: 6px solid #4facfe; }
+        .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 16px; }
+        .notice-box li { margin-bottom: 10px; }
 
+        /* 하단 문의처 및 연락처 버튼 */
         .contact-box { text-align: center; }
-        .contact-actions { display: flex; justify-content: center; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
+        .contact-actions { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
         .phone-btn, .sms-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 12px 24px; border-radius: 50px; text-decoration: none; font-size: 15px; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 15px 30px; border-radius: 50px; text-decoration: none; font-size: 16px; font-weight: 600;
+            transition: 0.3s;
         }
-        .phone-btn { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); }
-        .sms-btn { background: rgba(79, 172, 254, 0.1); color: #4facfe; border: 1px solid rgba(79, 172, 254, 0.3); }
+        .phone-btn { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .phone-btn:hover { background: rgba(79, 172, 254, 0.2); border-color: #4facfe; }
+        .sms-btn { background: rgba(79, 172, 254, 0.15); color: #4facfe; border: 1px solid rgba(79, 172, 254, 0.4); }
 
+        /* 모바일 대응 반응형 디자인 */
+        @media (max-width: 600px) {
+            h1 { font-size: 26px; }
+            .profile-container { flex-direction: column; text-align: center; align-items: center; }
+            ul.timeline li { flex-direction: column; align-items: flex-start; gap: 8px; }
+            ul.timeline li strong { width: 100%; }
+            .glass-card { padding: 25px; }
+        }
+
+        /* 챗봇 UI */
         #chat-btn {
-            position: fixed; bottom: 25px; right: 25px;
+            position: fixed; bottom: 30px; right: 30px;
             background: linear-gradient(135deg, #4facfe 0%, #005BAC 100%);
             color: #fff; border: none; border-radius: 50%;
-            width: 60px; height: 60px; font-size: 26px; cursor: pointer; z-index: 1000;
+            width: 65px; height: 65px; font-size: 30px; cursor: pointer; z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 91, 172, 0.5);
         }
         #chat-window {
-            display: none; position: fixed; bottom: 95px; right: 20px;
-            width: calc(100% - 40px); max-width: 350px; height: 480px;
+            display: none; position: fixed; bottom: 110px; right: 30px;
+            width: 350px; height: 500px;
             background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(15px); border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid rgba(79, 172, 254, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid rgba(79, 172, 254, 0.3);
             z-index: 1000; flex-direction: column; overflow: hidden;
         }
-        #chat-header { background: rgba(255, 255, 255, 0.03); color: #fff; padding: 20px; text-align: center; border-bottom: 1px solid rgba(79, 172, 254, 0.1); font-weight: 600; }
-        #chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .msg { max-width: 80%; padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.5; }
-        .msg.bot { background: rgba(255, 255, 255, 0.05); color: #f1f5f9; align-self: flex-start; }
-        .msg.user { background: #005BAC; color: #fff; align-self: flex-end; }
-        #chat-input-area { display: flex; padding: 15px; background: rgba(0, 0, 0, 0.5); }
-        #chat-input { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #333; background: #1a1a1a; color: #fff; outline: none; }
+        #chat-header { background: rgba(255, 255, 255, 0.05); color: #fff; padding: 20px; text-align: center; border-bottom: 1px solid rgba(79, 172, 254, 0.2); font-weight: 600; }
+        #chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
+        .msg { max-width: 85%; padding: 12px 18px; border-radius: 18px; font-size: 14px; line-height: 1.6; }
+        .msg.bot { background: rgba(255, 255, 255, 0.08); color: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .msg.user { background: #005BAC; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; }
+        #chat-input-area { display: flex; padding: 15px; background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        #chat-input { flex: 1; padding: 12px 15px; border-radius: 12px; border: 1px solid #333; background: #1a1a1a; color: #fff; outline: none; }
     </style>
 </head>
 <body>
     <div class="bg-texture"></div>
+    
     <nav class="top-nav">
         <img src="logo2.png" alt="Yuanta Securities">
     </nav>
 
     <div class="container">
         <div class="hero">
-            <img src="Gemini_Generated_Image_g6g0owg6g0owg6g0.png" class="main-banner" alt="Leaders Forum">
+            <img src="Gemini_Generated_Image_g6g0owg6g0owg6g0.png" class="main-banner" alt="Leaders Forum Banner">
             <div class="date-badge">2026. 05. 28 (THU)</div>
             <h1>LEADERS FORUM:<br>Agentic AI 시대 경제와 인류</h1>
         </div>
@@ -202,7 +229,8 @@
                     <p>• 독일 막스플랑크 뇌과학 연구소 박사</p>
                     <p>• 미국 M.I.T. 포스닥 / 일본 이화학연구소 (RIKEN) 연구원</p>
                     <p>• 미국 미네소타 대학교 조교수 / 보스턴 대학교 부교수</p>
-                    <p>《AGI, 천사인가 악마인가》, 《존재하지 않는 영화》 등 저술</p>
+                    <span class="bio-tag">[주요 저서]</span>
+                    <p>《AGI, 천사인가 악마인가》, 《존재하지 않는 영화》, 《ChatGPT에게 묻는 인류의 미래》 등</p>
                 </div>
             </div>
         </div>
@@ -211,7 +239,7 @@
             <h2>⏰ 일정 안내</h2>
             <ul class="timeline">
                 <li><strong>11:00 ~ 11:25</strong> 🍔 도시락 식사 (햄버거와 음료 제공)</li>
-                <li><strong>11:30 ~ 12:50</strong> 🎤 본 강의 진행</li>
+                <li><strong>11:30 ~ 12:50</strong> 🎤 본 강의 진행 (YSK홀)</li>
             </ul>
         </div>
 
@@ -224,10 +252,10 @@
         </div>
 
         <div class="glass-card notice-box">
-            <h2>📌 식사 가이드 및 공지사항</h2>
+            <h2>📌 식사 및 공지사항</h2>
             <ul>
                 <li>원활한 강의 진행을 위해 11시부터 햄버거가 제공됩니다. 강의 시작 전 미리 식사를 부탁드립니다.</li>
-                <li>식사 후 포장지와 빈 캔은 배포된 갈색 봉투에 담아, 반드시 각 층의 분리 배출함에 버려주세요.</li>
+                <li>식사 후 포장지와 빈 캔은 배포된 봉투에 담아, 반드시 각 층의 분리 배출함에 버려주세요.</li>
             </ul>
         </div>
 
@@ -235,8 +263,12 @@
             <h2>📞 문의처</h2>
             <p><strong>인사혁신본부 인재성장팀</strong> 주관</p>
             <div class="contact-actions">
-                <a href="tel:02-3770-2408" class="phone-btn"><i class="fa-solid fa-phone"></i> 02-3770-2408</a>
-                <a href="sms:02-3770-2408" class="sms-btn"><i class="fa-solid fa-comment-dots"></i> 문자 보내기</a>
+                <a href="tel:02-3770-2408" class="phone-btn">
+                    <i class="fa-solid fa-phone"></i> 02-3770-2408
+                </a>
+                <a href="sms:02-3770-2408" class="sms-btn">
+                    <i class="fa-solid fa-comment-dots"></i> 문자 보내기
+                </a>
             </div>
         </div>
     </div>
@@ -244,8 +276,12 @@
     <button id="chat-btn"><i class="fa-solid fa-robot"></i></button>
     <div id="chat-window">
         <div id="chat-header">포럼 안내 챗봇</div>
-        <div id="chat-messages"><div class="msg bot">안녕하세요! 포럼 일정이나 실시간 질문 링크 등에 대해 궁금한 점을 물어보세요!</div></div>
-        <div id="chat-input-area"><input type="text" id="chat-input" placeholder="질문을 입력하세요..." onkeypress="handleEnter(event)"></div>
+        <div id="chat-messages">
+            <div class="msg bot">안녕하세요! 포럼 일정이나 실시간 질문 링크 등에 대해 궁금한 점을 물어보세요!</div>
+        </div>
+        <div id="chat-input-area">
+            <input type="text" id="chat-input" placeholder="질문을 입력하세요..." onkeypress="handleEnter(event)">
+        </div>
     </div>
 
     <script>
@@ -265,21 +301,21 @@
             if (!text) return;
             appendMessage(text, 'user');
             chatInput.value = '';
+
             setTimeout(() => {
                 let reply = "죄송합니다. 저는 무료 AI로 만든 챗봇이라 답변을 드릴 수 없는 내용이에요! 유료버전으로 태어나면 다시 답변드릴게요!";
                 
-                if (text.includes('질문') || text.includes('슬라이도')) {
-                    reply = "상단의 **Slido 버튼**을 클릭해 주세요!";
-                } else if (text.includes('문의') || text.includes('팀') || text.includes('연락처')) {
-                    reply = "**인사혁신본부 인재성장팀**으로 문의주세요. 하단 통화 버튼을 이용하시면 됩니다.";
+                if (text.includes('질문') || text.includes('슬라이도') || text.includes('slido')) {
+                    reply = "실시간 질문은 상단의 **Slido 버튼**을 클릭해 주세요!";
                 } else if (text.includes('장소') || text.includes('어디') || text.includes('위치')) {
                     reply = "이번 포럼은 **3층 YSK홀**에서 진행됩니다.";
                 } else if (text.includes('시간') || text.includes('일정') || text.includes('언제')) {
-                    reply = "포럼은 **5월 28일(목) 11:00 부터 12:50** 까지 진행됩니다. (11시부터 식사 시작)";
+                    reply = "포럼은 **5월 28일(목) 11:00 부터 12:50** 까지 진행됩니다.";
                 } else if (text.includes('식사') || text.includes('밥') || text.includes('도시락') || text.includes('햄버거') || text.includes('쓰레기')) {
                     reply = "11시부터 **햄버거와 음료**가 제공됩니다. 식사 후 쓰레기는 배포된 봉투에 담아 분리 배출함에 버려주세요!";
+                } else if (text.includes('문의') || text.includes('팀') || text.includes('연락처')) {
+                    reply = "본 과정은 **인사혁신본부 인재성장팀**에서 주관합니다. 화면 맨 아래의 통화/문자 버튼을 눌러주세요.";
                 }
-
                 appendMessage(reply, 'bot');
             }, 600);
         }
