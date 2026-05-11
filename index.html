@@ -7,8 +7,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* 차콜 블랙 + 심해 느낌의 그라데이션으로 깊이감 복구 */
         body {
-            background-color: #121212;
+            background: radial-gradient(circle at 15% 50%, #1a2035, #121212, #050608);
+            background-attachment: fixed;
             color: #f1f5f9;
             font-family: 'Pretendard', sans-serif;
             line-height: 1.6;
@@ -18,7 +20,7 @@
             position: relative;
         }
 
-        /* 세련된 추상적 로고 패턴 배경 */
+        /* 유안타증권 추상적 로고 워터마크 */
         .bg-texture {
             position: fixed;
             top: 50%;
@@ -30,7 +32,7 @@
             background-size: 180vw auto;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.03;
+            opacity: 0.04; 
             z-index: -1;
             pointer-events: none;
         }
@@ -43,7 +45,7 @@
             background: rgba(18, 18, 18, 0.8);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(79, 172, 254, 0.1);
+            border-bottom: 1px solid rgba(79, 172, 254, 0.15);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -73,19 +75,19 @@
             color: #4facfe; padding: 6px 16px; border-radius: 50px; font-size: 14px; margin-bottom: 12px;
         }
 
+        /* 글래스모피즘 가시성 향상 */
         .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(79, 172, 254, 0.1);
+            background: rgba(255, 255, 255, 0.04); /* 투명도 올려서 카드가 잘 보이게 수정 */
+            border: 1px solid rgba(79, 172, 254, 0.2);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-radius: 24px;
             padding: 30px;
             margin-bottom: 35px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
         }
-        .glass-card h2 { border-bottom: 1px solid rgba(79, 172, 254, 0.1); padding-bottom: 12px; margin-top: 0; margin-bottom: 24px; font-size: 24px; }
+        .glass-card h2 { border-bottom: 1px solid rgba(79, 172, 254, 0.2); padding-bottom: 12px; margin-top: 0; margin-bottom: 24px; font-size: 24px; }
 
-        /* 버튼 그룹 (LIVE 애니메이션 포함) */
         .btn-group { display: flex; flex-direction: column; gap: 15px; }
         .slido-btn {
             display: flex; align-items: center; justify-content: center; gap: 12px;
@@ -109,7 +111,6 @@
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); }
         }
 
-        /* 강사 프로필 */
         .profile-container { display: flex; gap: 25px; align-items: flex-start; }
         .profile-img { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 2px solid #4facfe; flex-shrink: 0; }
         .profile-text h3 { font-size: 24px; margin: 0 0 10px 0; -webkit-text-fill-color: #fff; background: none; }
@@ -119,17 +120,26 @@
             .profile-container { flex-direction: column; text-align: center; align-items: center; }
         }
 
-        /* 하단 문의처 */
+        ul.timeline { list-style: none; padding: 0; margin: 0; }
+        ul.timeline li {
+            background: rgba(255, 255, 255, 0.03); margin-bottom: 12px;
+            padding: 15px 20px; border-radius: 14px;
+            display: flex; align-items: center; border: 1px solid rgba(79, 172, 254, 0.1);
+        }
+        ul.timeline li strong { color: #4facfe; width: 110px; flex-shrink: 0; }
+
+        .notice-box { border-left: 5px solid #4facfe; }
+        .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 15px; }
+
         .contact-box { text-align: center; }
         .contact-actions { display: flex; justify-content: center; gap: 12px; margin-top: 15px; flex-wrap: wrap; }
         .phone-btn, .sms-btn {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 12px 24px; border-radius: 50px; text-decoration: none; font-size: 15px; font-weight: 600;
         }
-        .phone-btn { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .phone-btn { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); }
         .sms-btn { background: rgba(79, 172, 254, 0.1); color: #4facfe; border: 1px solid rgba(79, 172, 254, 0.3); }
 
-        /* 챗봇 스타일 */
         #chat-btn {
             position: fixed; bottom: 25px; right: 25px;
             background: linear-gradient(135deg, #4facfe 0%, #005BAC 100%);
@@ -139,10 +149,11 @@
         #chat-window {
             display: none; position: fixed; bottom: 95px; right: 20px;
             width: calc(100% - 40px); max-width: 350px; height: 480px;
-            background: rgba(18, 18, 18, 0.98); border-radius: 24px;
+            background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(15px); border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid rgba(79, 172, 254, 0.2);
             z-index: 1000; flex-direction: column; overflow: hidden;
         }
+        #chat-header { background: rgba(255, 255, 255, 0.03); color: #fff; padding: 20px; text-align: center; border-bottom: 1px solid rgba(79, 172, 254, 0.1); font-weight: 600; }
         #chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
         .msg { max-width: 80%; padding: 12px 16px; border-radius: 16px; font-size: 14px; line-height: 1.5; }
         .msg.bot { background: rgba(255, 255, 255, 0.05); color: #f1f5f9; align-self: flex-start; }
