@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* 기본 설정: 모든 글자가 단어 단위로 줄바꿈되도록 설정 (모바일 최적화 핵심) */
+        /* 기본 설정: 모든 글자가 단어 단위로 줄바꿈 (모바일 최적화) */
         * { word-break: keep-all; }
 
         body {
@@ -120,6 +120,7 @@
         .profile-img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #4facfe; flex-shrink: 0; box-shadow: 0 0 20px rgba(79, 172, 254, 0.2); }
         .profile-text h3 { font-size: 26px; margin: 0 0 12px 0; -webkit-text-fill-color: #fff; background: none; }
         .profile-text p { margin: 6px 0; color: #cbd5e1; font-size: 16px; }
+        .profile-text .bio-tag { color: #4facfe; font-weight: 600; font-size: 14px; margin-top: 15px; margin-bottom: 5px; display: inline-block; }
 
         ul.timeline { list-style: none; padding: 0; margin: 0; }
         ul.timeline li {
@@ -135,6 +136,11 @@
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
+        /* 복구된 공지사항 스타일 */
+        .notice-box { border-left: 6px solid #4facfe; }
+        .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 16px; }
+        .notice-box li { margin-bottom: 10px; }
+
         .contact-box { text-align: center; }
         .contact-actions { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
         .phone-btn, .sms-btn {
@@ -146,7 +152,7 @@
         .phone-btn:hover { background: rgba(79, 172, 254, 0.2); border-color: #4facfe; }
         .sms-btn { background: rgba(79, 172, 254, 0.15); color: #4facfe; border: 1px solid rgba(79, 172, 254, 0.4); }
 
-        /* 모바일 대응 반응형 최적화 (여기가 핵심!) */
+        /* 모바일 대응 반응형 최적화 */
         @media (max-width: 600px) {
             h1 { font-size: 24px; line-height: 1.4; }
             .hero .date-badge { font-size: 13px; padding: 6px 16px; }
@@ -154,38 +160,32 @@
             .glass-card { padding: 25px 20px; margin-bottom: 25px; }
             .glass-card h2 { font-size: 22px; margin-bottom: 18px; }
             
-            /* 버튼들이 폰 화면에 꽉 차게 조절 */
             .slido-btn { font-size: 16px; padding: 18px; }
             .survey-btn { font-size: 15px; padding: 16px; }
             
-            /* 프로필 레이아웃을 세로로 깔끔하게 떨어지게 */
+            /* 프로필 레이아웃 모바일 정렬 */
             .profile-container { flex-direction: column; text-align: center; align-items: center; gap: 20px; }
             .profile-img { width: 140px; height: 140px; }
             
-            /* 일정 안내 텍스트가 겹치지 않게 위아래로 분리 */
             ul.timeline li { flex-direction: column; align-items: flex-start; gap: 6px; padding: 18px; }
             ul.timeline li strong { width: 100%; font-size: 16px; }
             
-            /* 연락처 버튼을 위아래로 넓게 배치 */
             .contact-actions { flex-direction: column; gap: 10px; }
             .phone-btn, .sms-btn { width: 100%; box-sizing: border-box; }
 
-            /* 챗봇 창 크기 모바일 최적화 */
-            #chat-window {
-                width: calc(100% - 30px); right: 15px; bottom: 100px; height: 60vh;
-            }
+            #chat-window { width: calc(100% - 30px); right: 15px; bottom: 100px; height: 60vh; }
         }
 
-        /* 챗봇 UI 스타일 */
+        /* 챗봇 스타일 */
         #chat-btn {
-            position: fixed; bottom: 25px; right: 25px;
+            position: fixed; bottom: 30px; right: 30px;
             background: linear-gradient(135deg, #4facfe 0%, #005BAC 100%);
             color: #fff; border: none; border-radius: 50%;
-            width: 60px; height: 60px; font-size: 28px; cursor: pointer; z-index: 1000;
+            width: 65px; height: 65px; font-size: 30px; cursor: pointer; z-index: 1000;
             box-shadow: 0 10px 30px rgba(0, 91, 172, 0.5);
         }
         #chat-window {
-            display: none; position: fixed; bottom: 100px; right: 30px;
+            display: none; position: fixed; bottom: 110px; right: 30px;
             width: 350px; height: 520px;
             background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(15px); border-radius: 24px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid rgba(79, 172, 254, 0.3);
@@ -197,7 +197,6 @@
         .msg.bot { background: rgba(255, 255, 255, 0.08); color: #f1f5f9; align-self: flex-start; border-bottom-left-radius: 4px; }
         .msg.user { background: #005BAC; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; }
         
-        /* 빠른 질문 예시 버튼 */
         #chat-quick-replies {
             display: flex; gap: 8px; padding: 12px 15px 5px 15px; overflow-x: auto;
             background: rgba(0, 0, 0, 0.5); border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -240,7 +239,8 @@
                     <h3>김대식 교수</h3>
                     <p>• 카이스트 전기 및 전자공학부 / 독일 막스플랑크 박사</p>
                     <p>• 미국 M.I.T. 포스닥 / 일본 이화학연구소 (RIKEN)</p>
-                    <p>《AGI, 천사인가 악마인가》, 《존재하지 않는 영화》 등 저술</p>
+                    <span class="bio-tag">[주요 저서]</span>
+                    <p>《AGI, 천사인가 악마인가》<br>《존재하지 않는 영화》<br>《ChatGPT에게 묻는 인류의 미래》 등 다수</p>
                 </div>
             </div>
         </div>
@@ -259,6 +259,14 @@
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/yZEtpzcCcYc" frameborder="0" allowfullscreen></iframe>
             </div>
+        </div>
+
+        <div class="glass-card notice-box">
+            <h2>📌 식사 및 공지사항</h2>
+            <ul>
+                <li>원활한 강의 진행을 위해 11시부터 햄버거가 제공됩니다. 강의 시작 전 미리 식사를 부탁드립니다.</li>
+                <li>식사 후 포장지와 빈 캔은 배포된 봉투에 담아, <strong>반드시 각 층의 분리 배출함</strong>에 버려주세요.</li>
+            </ul>
         </div>
 
         <div class="glass-card contact-box">
@@ -341,6 +349,8 @@
                     reply = "AGI는 사람처럼 모든 지적 능력을 스스로 학습하고 해결할 수 있는 미래형 인공지능을 의미합니다! 🚀";
                 } else if (check(['agentic', '에이전틱'])) {
                     reply = "Agentic AI는 스스로 목표를 세우고 판단해 능동적으로 업무를 수행하는 차세대 AI 시스템입니다! 🤖";
+                } else if (check(['쓰레기', '정리', '분리수거', '봉투'])) {
+                    reply = "식사 후 발생한 쓰레기는 배포된 봉투에 담아 각 층의 분리 배출함에 버려주시면 감사하겠습니다! 🗑️";
                 }
 
                 appendMessage(reply, 'bot');
