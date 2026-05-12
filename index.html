@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* 기본 설정: 모든 글자가 단어 단위로 줄바꿈 (모바일 최적화) */
-        * { word-break: keep-all; }
+        * { word-break: keep-all; box-sizing: border-box; }
 
         body {
             background: radial-gradient(circle at 15% 50%, #1a2035, #121212, #050608);
@@ -40,6 +40,7 @@
         .top-nav {
             display: flex;
             align-items: center;
+            justify-content: space-between; /* 로고와 우측 텍스트를 양끝으로 배치 */
             padding: 16px 5vw;
             background: rgba(18, 18, 18, 0.85);
             backdrop-filter: blur(15px);
@@ -50,6 +51,14 @@
             z-index: 100;
         }
         .top-nav img { height: 26px; }
+        
+        /* 새로 추가된 우측 문구 스타일 */
+        .nav-credit {
+            color: #FF8F43;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: right;
+        }
 
         .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
 
@@ -61,6 +70,13 @@
         }
 
         h1 { font-size: 32px; margin-top: 0; line-height: 1.35; margin-bottom: 20px; text-align: center; }
+        
+        /* 타이틀 내 주황색 강조 텍스트 클래스 */
+        h1 .highlight-orange {
+            background: none;
+            -webkit-text-fill-color: #FF8F43;
+            color: #FF8F43;
+        }
 
         .hero { text-align: center; margin-bottom: 40px; }
         .hero img.main-banner {
@@ -143,7 +159,6 @@
         .contact-box { text-align: center; }
         .contact-actions { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
         
-        /* 폰 버튼만 남기고 문자 버튼 관련 스타일 삭제 */
         .phone-btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             padding: 15px 30px; border-radius: 50px; text-decoration: none; font-size: 16px; font-weight: 600;
@@ -155,6 +170,7 @@
         /* 모바일 대응 반응형 최적화 */
         @media (max-width: 600px) {
             h1 { font-size: 24px; line-height: 1.4; }
+            .nav-credit { font-size: 11px; } /* 모바일에서 추가 텍스트 축소 */
             .hero .date-badge { font-size: 13px; padding: 6px 16px; }
             .container { padding: 25px 15px; }
             .glass-card { padding: 25px 20px; margin-bottom: 25px; }
@@ -215,12 +231,15 @@
 </head>
 <body>
     <div class="bg-texture"></div>
-    <nav class="top-nav"><img src="logo2.png" alt="Yuanta Securities"></nav>
+    <nav class="top-nav">
+        <img src="logo2.png" alt="Yuanta Securities">
+        <span class="nav-credit">Created by HRD Team using AI Tools</span>
+    </nav>
     <div class="container">
         <div class="hero">
             <img src="Gemini_Generated_Image_g6g0owg6g0owg6g0.png" class="main-banner" alt="Banner">
             <div class="date-badge">2026. 05. 28 (THU)</div>
-            <h1>LEADERS FORUM:<br>Agentic AI 시대 경제와 인류</h1>
+            <h1>LEADERS FORUM<br><span class="highlight-orange">Agentic AI 시대 경제와 인류</span></h1>
         </div>
 
         <div class="glass-card">
@@ -247,7 +266,7 @@
         <div class="glass-card">
             <h2>⏰ 일정 안내</h2>
             <ul class="timeline">
-                <li><strong>11:00 ~ 11:25</strong> 🍔 도시락 식사 (패티바이번 햄버거 제공)</li>
+                <li><strong>11:00 ~ 11:25</strong> 🍔 Brown bag (패티바이번 햄버거 제공)</li>
                 <li><strong>11:30 ~ 12:50</strong> 🎤 본 강의 진행 (YSK홀)</li>
             </ul>
         </div>
@@ -263,8 +282,8 @@
         <div class="glass-card notice-box">
             <h2>📌 식사 및 공지사항</h2>
             <ul>
-                <li>원활한 강의 진행을 위해 11시부터 햄버거가 제공됩니다. 강의 시작 전 미리 식사를 부탁드립니다.</li>
-                <li>식사 후 포장지와 빈 캔은 배포된 봉투에 담아, <strong>반드시 각 층의 분리 배출함</strong>에 버려주세요.</li>
+                <li>11시부터 햄버거가 제공되며, 강의 시작 전 마무리 부탁드립니다.</li>
+                <li>식사 후 쓰레기는 봉투에 담아 지정된 장소에 버려주세요.</li>
             </ul>
         </div>
 
@@ -328,7 +347,7 @@
                 const check = (keys) => keys.some(key => lowerText.includes(key));
 
                 if (check(['시간', '언제', '몇시', '일정'])) {
-                    reply = "11:00부터 **도시락 식사**가 시작되며, 11:30부터 **본 강연**이 시작되어 12:50에 종료될 예정입니다. ⏰";
+                    reply = "11:00부터 **Brown bag 식사**가 시작되며, 11:30부터 **본 강연**이 시작되어 12:50에 종료될 예정입니다. ⏰";
                 } else if (check(['장소', '어디', '위치', '홀'])) {
                     reply = "이번 포럼은 본사 **3층 YSK홀**에서 진행됩니다! 📍";
                 } else if (check(['메뉴', '밥', '먹', '음료', '햄버거', '커피'])) {
