@@ -136,21 +136,21 @@
         }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* 복구된 공지사항 스타일 */
         .notice-box { border-left: 6px solid #4facfe; }
         .notice-box ul { margin: 0; padding-left: 20px; color: #cbd5e1; font-size: 16px; }
         .notice-box li { margin-bottom: 10px; }
 
         .contact-box { text-align: center; }
         .contact-actions { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-        .phone-btn, .sms-btn {
+        
+        /* 폰 버튼만 남기고 문자 버튼 관련 스타일 삭제 */
+        .phone-btn {
             display: inline-flex; align-items: center; justify-content: center; gap: 10px;
             padding: 15px 30px; border-radius: 50px; text-decoration: none; font-size: 16px; font-weight: 600;
             transition: 0.3s;
+            background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .phone-btn { background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); }
         .phone-btn:hover { background: rgba(79, 172, 254, 0.2); border-color: #4facfe; }
-        .sms-btn { background: rgba(79, 172, 254, 0.15); color: #4facfe; border: 1px solid rgba(79, 172, 254, 0.4); }
 
         /* 모바일 대응 반응형 최적화 */
         @media (max-width: 600px) {
@@ -163,7 +163,6 @@
             .slido-btn { font-size: 16px; padding: 18px; }
             .survey-btn { font-size: 15px; padding: 16px; }
             
-            /* 프로필 레이아웃 모바일 정렬 */
             .profile-container { flex-direction: column; text-align: center; align-items: center; gap: 20px; }
             .profile-img { width: 140px; height: 140px; }
             
@@ -171,7 +170,7 @@
             ul.timeline li strong { width: 100%; font-size: 16px; }
             
             .contact-actions { flex-direction: column; gap: 10px; }
-            .phone-btn, .sms-btn { width: 100%; box-sizing: border-box; }
+            .phone-btn { width: 100%; box-sizing: border-box; }
 
             #chat-window { width: calc(100% - 30px); right: 15px; bottom: 100px; height: 60vh; }
         }
@@ -274,7 +273,6 @@
             <p><strong>인사혁신본부 인재성장팀</strong></p>
             <div class="contact-actions">
                 <a href="tel:02-3770-2408" class="phone-btn"><i class="fa-solid fa-phone"></i> 02-3770-2408</a>
-                <a href="sms:02-3770-2408" class="sms-btn"><i class="fa-solid fa-comment-dots"></i> 문자 보내기</a>
             </div>
         </div>
     </div>
